@@ -1,114 +1,42 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:uni_society_app/assets.dart';
-import 'package:uni_society_app/core/constants/app_constants.dart';
-import 'package:uni_society_app/core/extensions/extensions.dart';
-import 'package:uni_society_app/core/utils/attributes/attributes.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:uni_society_app/features/home_screen/view_model/home_view_model.dart';
+import 'package:uni_society_app/features/movie_screen/view/movie_screen.dart';
+import 'package:uni_society_app/features/series_screen/view/series_screen.dart';
 
-import '../../../core/widgets/custom_space.dart';
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  final List<Widget> screens = const [MovieScreen(), SeriesScreen()];
+
+  @override
   Widget build(BuildContext context) {
+    int currentIndex = ref.watch(homeViewModel);
     return Scaffold(
-      appBar: AppBar(
-        title: Image.asset(
-          Assets.images.b3PNG,
-          fit: BoxFit.contain,
-          height: 120,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: Attributes().appBarElevation,
-      ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: Attributes().scaffoldPadding),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(nowPlaying),
-              CustomSpace(
-                height: 20,
-              ),
-              NowPlayingSlider(),
-              CustomSpace(
-                height: 20,
-              ),
-              Text(popular),
-              PopularList(),
-              CustomSpace(
-                height: 20,
-              ),
-              Text(trendMovie),
-              PopularList(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class PopularList extends StatelessWidget {
-  const PopularList({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: context.height * .25,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return Container(
-            width: 150,
-            margin: EdgeInsets.all(Attributes().cardPadding),
-            decoration: BoxDecoration(
-              color: Colors.amber,
-              borderRadius:
-                  BorderRadius.circular(Attributes().cardBorderRadius),
-            ),
-          );
+      body: screens[currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (value) {
+          ref.read(homeViewModel.notifier).changeScreen(value);
         },
-      ),
-    );
-  }
-}
-
-class NowPlayingSlider extends StatelessWidget {
-  const NowPlayingSlider({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return CarouselSlider.builder(
-      itemCount: 10,
-      itemBuilder: (context, index, realIndex) {
-        return Container(
-          height: 250,
-          width: 150,
-          decoration: BoxDecoration(
-            color: Colors.amber,
-            borderRadius: BorderRadius.circular(Attributes().cardBorderRadius),
-          ),
-        );
-      },
-      options: CarouselOptions(
-        height: 250,
-        autoPlay: true,
-        viewportFraction: .5,
-        enlargeCenterPage: true,
-        pageSnapping: true,
-        autoPlayCurve: Curves.fastOutSlowIn,
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.movie_outlined,
+                size: 25,
+              ),
+              label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.tv_outlined,
+              ),
+              label: ''),
+        ],
       ),
     );
   }
