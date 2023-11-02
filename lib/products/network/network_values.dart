@@ -9,6 +9,7 @@ class EndPointsMovie {
 }
 
 class EndPointsSeries {
+  static const String topRated = '/3/tv/top_rated';
   static const String trending = '/3/trending/tv/day';
   static const String popular = '/3/tv/popular';
   static const String genre = '/3/genre/tv/list';
