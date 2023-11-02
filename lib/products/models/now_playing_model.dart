@@ -24,7 +24,6 @@ class NowPlayingModel {
 }
 
 class NowPlays {
-  bool? adult;
   String? backdropPath;
   List<int>? genreIds;
   int? id;
@@ -36,7 +35,6 @@ class NowPlays {
   double? voteAverage;
 
   NowPlays({
-    this.adult,
     this.backdropPath,
     this.genreIds,
     this.id,
@@ -49,7 +47,6 @@ class NowPlays {
   });
 
   NowPlays.fromJson(Map<String, dynamic> json) {
-    adult = json['adult'];
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'].cast<int>();
     id = json['id'];
@@ -63,7 +60,6 @@ class NowPlays {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['adult'] = adult;
     data['backdrop_path'] = backdropPath;
     data['genre_ids'] = genreIds;
     data['id'] = id;

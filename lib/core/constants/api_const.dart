@@ -2,6 +2,7 @@
 
 //API Urls
 const String apiHost = 'api.themoviedb.org';
+const String apiImagePath = 'https://image.tmdb.org/t/p/w500';
 
 //API Key
 const String apiKey = '9072a17672689e35b9813dc4b7f732bd';
