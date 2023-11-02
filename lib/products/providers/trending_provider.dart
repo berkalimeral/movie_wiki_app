@@ -13,7 +13,7 @@ class TrendsProvider extends StateNotifier<List<Trends>?> {
 
   final MovieService _service;
 
-  Future<List<Trends>?> getNowPlaysMovie() async {
+  Future<List<Trends>?> getTrendingMovies() async {
     state = await _service.getTrendingMovies();
     return state;
   }

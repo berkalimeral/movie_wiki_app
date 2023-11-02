@@ -14,6 +14,8 @@ class CustomColorsDark {
   static Color surface = const Color(0xff735F32);
   static Color onSurface = const Color(0xff735F32);
   static const Color ratingIconColor = Color(0xFFFFC319);
+  static const Color chipColorDark = Color(0xFF8A96AB);
+  static final Color cardColor = Colors.grey.shade800;
 }
 
 class CustomColorsLight {
@@ -30,4 +32,6 @@ class CustomColorsLight {
   static Color surface = const Color(0xff735F32);
   static Color onSurface = const Color(0xff735F32);
   static const Color ratingIconColor = Color(0xFFFFC319);
+  static const Color chipColorLight = Color(0xFFDBE3FF);
+  static final Color cardColor = Colors.grey.shade200;
 }
