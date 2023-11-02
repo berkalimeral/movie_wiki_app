@@ -6,18 +6,36 @@ import 'package:uni_society_app/core/theme/custom_colors.dart';
 import 'package:uni_society_app/core/widgets/custom_space.dart';
 import 'package:uni_society_app/features/movie_screen/widgets/rating_star_line.dart';
 import 'package:uni_society_app/products/models/popular_movie_model.dart';
+import 'package:uni_society_app/products/providers/genres_provider.dart';
 import 'package:uni_society_app/products/providers/popular_provider.dart';
 
 import '../../../core/constants/api_const.dart';
 import '../../../core/utils/attributes/attributes.dart';
+import '../../../products/models/movie_genres_model.dart';
 
-class PopularList extends ConsumerWidget {
+class PopularList extends ConsumerStatefulWidget {
   const PopularList({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<PopularList> createState() => _PopularListState();
+}
+
+class _PopularListState extends ConsumerState<PopularList> {
+  List<Genres>? genres = [];
+
+  @override
+  void initState() {
+    super.initState();
+    ref
+        .read(genresProvider.notifier)
+        .getGenresMovie()
+        .then((genreList) => genres = genreList);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       height: context.height * .25,
       child: FutureBuilder<List<Populars>?>(
@@ -79,23 +97,24 @@ class PopularList extends ConsumerWidget {
                                 SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
-                                    children: popular!.genreIds!
-                                        .map((genderId) => Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: Attributes()
-                                                      .genderCardPadding),
-                                              child: Chip(
-                                                backgroundColor:
-                                                    CustomColorsDark
-                                                        .chipColorDark,
-                                                label: Text(
-                                                  genderId.toString(),
-                                                  style: context
-                                                      .textTheme.titleSmall,
-                                                ),
-                                              ),
-                                            ))
-                                        .toList(),
+                                    children:
+                                        popular!.genreIds!.map((genderId) {
+                                      final genre = genres?.firstWhere(
+                                          (genre) => genre.id == genderId);
+                                      return Padding(
+                                        padding: EdgeInsets.only(
+                                            left:
+                                                Attributes().genderCardPadding),
+                                        child: Chip(
+                                          backgroundColor:
+                                              CustomColorsDark.chipColorDark,
+                                          label: Text(
+                                            genre?.name ?? '',
+                                            style: context.textTheme.titleSmall,
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
                                   ),
                                 ),
                               ],

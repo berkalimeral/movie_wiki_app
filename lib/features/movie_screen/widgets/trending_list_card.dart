@@ -9,15 +9,33 @@ import 'package:uni_society_app/products/providers/trending_provider.dart';
 
 import '../../../core/constants/api_const.dart';
 import '../../../core/utils/attributes/attributes.dart';
+import '../../../products/models/movie_genres_model.dart';
 import '../../../products/models/trend_movie_model.dart';
+import '../../../products/providers/genres_provider.dart';
 
-class TrendList extends ConsumerWidget {
+class TrendList extends ConsumerStatefulWidget {
   const TrendList({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<TrendList> createState() => _TrendListState();
+}
+
+class _TrendListState extends ConsumerState<TrendList> {
+  List<Genres>? genres = [];
+
+  @override
+  void initState() {
+    super.initState();
+    ref
+        .read(genresProvider.notifier)
+        .getGenresMovie()
+        .then((genreList) => genres = genreList);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       height: context.height * .25,
       child: FutureBuilder<List<Trends>?>(
@@ -79,23 +97,23 @@ class TrendList extends ConsumerWidget {
                                 SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
-                                    children: trend!.genreIds!
-                                        .map((genderId) => Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: Attributes()
-                                                      .genderCardPadding),
-                                              child: Chip(
-                                                backgroundColor:
-                                                    CustomColorsDark
-                                                        .chipColorDark,
-                                                label: Text(
-                                                  genderId.toString(),
-                                                  style: context
-                                                      .textTheme.titleSmall,
-                                                ),
-                                              ),
-                                            ))
-                                        .toList(),
+                                    children: trend!.genreIds!.map((genreId) {
+                                      final genre = genres?.firstWhere(
+                                          (genre) => genre.id == genreId);
+                                      return Padding(
+                                        padding: EdgeInsets.only(
+                                            left:
+                                                Attributes().genderCardPadding),
+                                        child: Chip(
+                                          backgroundColor:
+                                              CustomColorsDark.chipColorDark,
+                                          label: Text(
+                                            genre?.name ?? '',
+                                            style: context.textTheme.titleSmall,
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
                                   ),
                                 ),
                               ],

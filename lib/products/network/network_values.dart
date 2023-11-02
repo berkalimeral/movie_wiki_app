@@ -16,3 +16,8 @@ class EndPointsSeries {
   static String movieDetail(id) => '/3/tv/$id';
   static String actors(id) => '/3/tv/$id/credits';
 }
+
+class EndPointsGenres {
+  static const String movieGenres = '/3/genre/movie/list';
+  static const String seriesGenres = '/3/genre/tv/list';
+}

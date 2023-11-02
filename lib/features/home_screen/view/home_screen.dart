@@ -4,6 +4,9 @@ import 'package:uni_society_app/features/home_screen/view_model/home_view_model.
 import 'package:uni_society_app/features/movie_screen/view/movie_screen.dart';
 import 'package:uni_society_app/features/series_screen/view/series_screen.dart';
 
+import '../../../assets.dart';
+import '../../../core/utils/attributes/attributes.dart';
+
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
@@ -18,6 +21,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     int currentIndex = ref.watch(homeViewModel);
     return Scaffold(
+      appBar: AppBar(
+        title: Image.asset(
+          Assets.images.b3PNG,
+          fit: BoxFit.contain,
+          height: 120,
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: Attributes().appBarElevation,
+      ),
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
