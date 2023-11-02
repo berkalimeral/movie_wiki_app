@@ -1,7 +1,7 @@
 ///API CONSTANTS
 
 //API Urls
-const String nowPlayingMovie = 'api.themoviedb.org';
+const String apiHost = 'api.themoviedb.org';
 
 //API Key
 const String apiKey = '9072a17672689e35b9813dc4b7f732bd';

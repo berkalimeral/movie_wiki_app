@@ -1,6 +1,7 @@
 class EndPointsMovie {
   static const String nowPlaying = '/3/movie/now_playing';
   static const String popular = '/3/movie/popular';
+  static const String trending = '/3/trending/movie/day';
   static const String genre = '/3/genre/movie/list';
 
   static String movieDetail(id) => '/3/movie/$id';
