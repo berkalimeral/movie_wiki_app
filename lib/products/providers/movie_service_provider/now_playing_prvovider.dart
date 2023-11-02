@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/products/service/movie_service.dart';
 
-import '../models/now_playing_model.dart';
+import '../../models/movie_models/now_playing_model.dart';
 
 final nowPlayingProvider =
     StateNotifierProvider<NowPlayingProvider, List<NowPlays>?>(

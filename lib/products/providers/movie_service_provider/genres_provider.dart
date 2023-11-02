@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/products/service/movie_service.dart';
 
-import '../models/movie_genres_model.dart';
+import '../../models/movie_models/movie_genres_model.dart';
 
 final genresProvider = StateNotifierProvider<GenresProvider, List<Genres>?>(
     (ref) => GenresProvider(MovieService()));

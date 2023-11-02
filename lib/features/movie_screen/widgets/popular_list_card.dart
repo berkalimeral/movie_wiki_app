@@ -5,13 +5,13 @@ import 'package:uni_society_app/core/extensions/extensions.dart';
 import 'package:uni_society_app/core/theme/custom_colors.dart';
 import 'package:uni_society_app/core/widgets/custom_space.dart';
 import 'package:uni_society_app/features/movie_screen/widgets/rating_star_line.dart';
-import 'package:uni_society_app/products/models/popular_movie_model.dart';
-import 'package:uni_society_app/products/providers/genres_provider.dart';
-import 'package:uni_society_app/products/providers/popular_provider.dart';
+import 'package:uni_society_app/products/models/movie_models/popular_movie_model.dart';
+import 'package:uni_society_app/products/providers/movie_service_provider/genres_provider.dart';
+import 'package:uni_society_app/products/providers/movie_service_provider/popular_provider.dart';
 
 import '../../../core/constants/api_const.dart';
 import '../../../core/utils/attributes/attributes.dart';
-import '../../../products/models/movie_genres_model.dart';
+import '../../../products/models/movie_models/movie_genres_model.dart';
 
 class PopularList extends ConsumerStatefulWidget {
   const PopularList({

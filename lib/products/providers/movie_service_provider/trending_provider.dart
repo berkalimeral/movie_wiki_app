@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../models/trend_movie_model.dart';
-import '../service/movie_service.dart';
+import '../../models/movie_models/trend_movie_model.dart';
+import '../../service/movie_service.dart';
 
 final trendsProvider = StateNotifierProvider<TrendsProvider, List<Trends>?>(
     (ref) => TrendsProvider(MovieService()));

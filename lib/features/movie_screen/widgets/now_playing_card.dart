@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 
 import '../../../core/constants/api_const.dart';
-import '../../../products/models/now_playing_model.dart';
-import '../../../products/providers/now_playing_prvovider.dart';
+import '../../../products/models/movie_models/now_playing_model.dart';
+import '../../../products/providers/movie_service_provider/now_playing_prvovider.dart';
 import 'rating_star_line.dart';
 
 class NowPlayingSlider extends ConsumerWidget {

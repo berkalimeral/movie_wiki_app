@@ -88,7 +88,7 @@ class SeriesService {
     }
   }
 
-  Future<List<Genres>?> getSeriesGenres() async {
+  Future<List<SeriesGenres>?> getSeriesGenres() async {
     var response = await https.get(
         Uri(
             scheme: 'https',

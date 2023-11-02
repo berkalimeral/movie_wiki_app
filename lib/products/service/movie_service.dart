@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:http/http.dart' as https;
-import 'package:uni_society_app/products/models/movie_genres_model.dart';
-import 'package:uni_society_app/products/models/now_playing_model.dart';
+import 'package:uni_society_app/products/models/movie_models/movie_genres_model.dart';
+import 'package:uni_society_app/products/models/movie_models/now_playing_model.dart';
 
 import '../../core/constants/api_const.dart';
-import '../models/popular_movie_model.dart';
-import '../models/trend_movie_model.dart';
+import '../models/movie_models/popular_movie_model.dart';
+import '../models/movie_models/trend_movie_model.dart';
 import '../network/network_values.dart';
 
 class MovieService {

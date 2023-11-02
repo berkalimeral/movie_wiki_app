@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../models/popular_movie_model.dart';
-import '../service/movie_service.dart';
+import '../../models/movie_models/popular_movie_model.dart';
+import '../../service/movie_service.dart';
 
 final popularProvider = StateNotifierProvider<PopularProvider, List<Populars>?>(
     (ref) => PopularProvider(MovieService()));
