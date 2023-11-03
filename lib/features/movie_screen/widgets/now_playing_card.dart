@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
+import 'package:uni_society_app/features/movie_detail_screen/view/movie_detail_screen.dart';
 
 import '../../../core/constants/api_const.dart';
 import '../../../products/models/movie_models/now_playing_model.dart';
@@ -26,7 +27,11 @@ class NowPlayingSlider extends ConsumerWidget {
               itemBuilder: (context, index, realIndex) {
                 NowPlays? nowPlay = nowPlays?[index];
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const MovieDetailScreen(),
+                    ));
+                  },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(22),
                     child: Card(
