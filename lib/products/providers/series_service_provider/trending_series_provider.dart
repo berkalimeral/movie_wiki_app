@@ -14,7 +14,7 @@ class TrendSeriesProvider extends StateNotifier<List<TrendsSeries>?> {
 
   final SeriesService _service;
 
-  Future<List<TrendsSeries>?> getTopRatedSeries() async {
+  Future<List<TrendsSeries>?> getTrendingSeries() async {
     state = await _service.getTrendingSeries();
     return state;
   }
