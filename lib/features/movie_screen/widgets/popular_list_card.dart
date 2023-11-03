@@ -24,7 +24,7 @@ class PopularList extends ConsumerStatefulWidget {
 }
 
 class _PopularListState extends ConsumerState<PopularList> {
-  List<Genres>? genres = [];
+  List<MovieGenres>? genres = [];
 
   @override
   void initState() {

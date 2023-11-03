@@ -24,7 +24,7 @@ class TrendList extends ConsumerStatefulWidget {
 }
 
 class _TrendListState extends ConsumerState<TrendList> {
-  List<Genres>? genres = [];
+  List<MovieGenres>? genres = [];
 
   @override
   void initState() {

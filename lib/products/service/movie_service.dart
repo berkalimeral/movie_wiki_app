@@ -7,6 +7,7 @@ import 'package:uni_society_app/products/models/movie_models/movie_genres_model.
 import 'package:uni_society_app/products/models/movie_models/now_playing_model.dart';
 
 import '../../core/constants/api_const.dart';
+import '../models/movie_detail_model/movie_detail_model.dart';
 import '../models/movie_models/popular_movie_model.dart';
 import '../models/movie_models/trend_movie_model.dart';
 import '../network/network_values.dart';
@@ -86,7 +87,7 @@ class MovieService {
     }
   }
 
-  Future<List<Genres>?> getMovieGenres() async {
+  Future<List<MovieGenres>?> getMovieGenres() async {
     var response = await https.get(
         Uri(
             scheme: 'https',
@@ -106,6 +107,32 @@ class MovieService {
     } else {
       log(
         'Something is wrong in getMovieGenres',
+      );
+      return null;
+    }
+  }
+
+  Future<MovieDetailModel?> getMovieDetailById(String movieId) async {
+    var response = await https.get(
+        Uri(
+          scheme: 'https',
+          host: apiHost,
+          path: EndPointsMovie.movieDetail(movieId),
+          queryParameters: {
+            'language': 'tr-TR',
+          },
+        ),
+        headers: {
+          'Authorization': apiReadAccessToken,
+        });
+
+    if (response.statusCode == HttpStatus.ok) {
+      var responseBody = jsonDecode(response.body);
+      MovieDetailModel movieDetail = MovieDetailModel.fromJson(responseBody);
+      return movieDetail;
+    } else {
+      log(
+        'Something is wrong in getMovieDetailById',
       );
       return null;
     }
