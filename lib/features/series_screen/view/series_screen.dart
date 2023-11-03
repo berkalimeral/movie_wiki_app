@@ -17,7 +17,7 @@ class SeriesScreen extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.all(Attributes().scaffoldPadding),
+          padding: EdgeInsets.all(Attributes().scaffoldPaddingHorizontal),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [

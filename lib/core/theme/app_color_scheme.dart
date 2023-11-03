@@ -6,7 +6,7 @@ class AppColorScheme {
   static ColorScheme get colorSchemeDark {
     return ColorScheme(
       brightness: Brightness.dark,
-      primary: CustomColorsDark.onPrimary,
+      primary: CustomColorsDark.primary,
       onPrimary: CustomColorsDark.onPrimary,
       secondary: CustomColorsDark.secondary,
       onSecondary: CustomColorsDark.onSecondary,

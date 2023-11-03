@@ -112,7 +112,7 @@ class MovieService {
     }
   }
 
-  Future<MovieDetailModel?> getMovieDetailById(String movieId) async {
+  Future<MovieDetailModel?> getMovieDetailById(int movieId) async {
     var response = await https.get(
         Uri(
           scheme: 'https',

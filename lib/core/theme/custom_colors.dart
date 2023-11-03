@@ -16,6 +16,7 @@ class CustomColorsDark {
   static const Color ratingIconColor = Color(0xFFFFC319);
   static const Color chipColorDark = Color(0xFF8A96AB);
   static final Color cardColor = Colors.grey.shade800;
+  static final Color? detailBgColor = Colors.grey[850];
 }
 
 class CustomColorsLight {
@@ -34,4 +35,5 @@ class CustomColorsLight {
   static const Color ratingIconColor = Color(0xFFFFC319);
   static const Color chipColorLight = Color(0xFFDBE3FF);
   static final Color cardColor = Colors.grey.shade200;
+  static final Color? detailBgColor = Colors.grey[100];
 }

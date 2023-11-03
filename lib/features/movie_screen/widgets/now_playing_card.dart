@@ -29,7 +29,9 @@ class NowPlayingSlider extends ConsumerWidget {
                 return GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const MovieDetailScreen(),
+                      builder: (context) => MovieDetailScreen(
+                        movieId: nowPlay?.id,
+                      ),
                     ));
                   },
                   child: ClipRRect(

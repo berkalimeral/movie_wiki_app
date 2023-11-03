@@ -18,8 +18,8 @@ class MovieScreen extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: Attributes().scaffoldPadding),
+          padding: EdgeInsets.symmetric(
+              horizontal: Attributes().scaffoldPaddingHorizontal),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
