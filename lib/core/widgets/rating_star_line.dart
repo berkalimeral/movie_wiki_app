@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 
-import '../../../core/theme/custom_colors.dart';
+import '../theme/custom_colors.dart';
 
 class RatingStarLine extends StatelessWidget {
   const RatingStarLine({

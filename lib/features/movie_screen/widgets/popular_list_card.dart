@@ -4,10 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 import 'package:uni_society_app/core/theme/custom_colors.dart';
 import 'package:uni_society_app/core/widgets/custom_space.dart';
-import 'package:uni_society_app/features/movie_screen/widgets/rating_star_line.dart';
+import 'package:uni_society_app/core/widgets/rating_star_line.dart';
 import 'package:uni_society_app/products/models/movie_models/popular_movie_model.dart';
 import 'package:uni_society_app/products/providers/movie_service_provider/genres_provider.dart';
 import 'package:uni_society_app/products/providers/movie_service_provider/popular_provider.dart';
+import 'package:collection/collection.dart';
 
 import '../../../core/constants/api_const.dart';
 import '../../../core/utils/attributes/attributes.dart';
@@ -99,7 +100,7 @@ class _PopularListState extends ConsumerState<PopularList> {
                                   child: Row(
                                     children:
                                         popular!.genreIds!.map((genderId) {
-                                      final genre = genres?.firstWhere(
+                                      final genre = genres?.firstWhereOrNull(
                                           (genre) => genre.id == genderId);
                                       return Padding(
                                         padding: EdgeInsets.only(

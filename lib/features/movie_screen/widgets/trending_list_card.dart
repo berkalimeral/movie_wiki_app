@@ -4,8 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 import 'package:uni_society_app/core/theme/custom_colors.dart';
 import 'package:uni_society_app/core/widgets/custom_space.dart';
-import 'package:uni_society_app/features/movie_screen/widgets/rating_star_line.dart';
+import 'package:uni_society_app/core/widgets/rating_star_line.dart';
 import 'package:uni_society_app/products/providers/movie_service_provider/trending_provider.dart';
+import 'package:collection/collection.dart';
 
 import '../../../core/constants/api_const.dart';
 import '../../../core/utils/attributes/attributes.dart';
@@ -98,7 +99,7 @@ class _TrendListState extends ConsumerState<TrendList> {
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
                                     children: trend!.genreIds!.map((genreId) {
-                                      final genre = genres?.firstWhere(
+                                      final genre = genres?.firstWhereOrNull(
                                           (genre) => genre.id == genreId);
                                       return Padding(
                                         padding: EdgeInsets.only(
