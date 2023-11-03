@@ -29,6 +29,7 @@ class PopularSeries {
   int? id;
   List<String>? originCountry;
   String? originalName;
+  String? name;
   String? overview;
   String? posterPath;
   String? firstAirDate;
@@ -40,6 +41,7 @@ class PopularSeries {
     this.id,
     this.originCountry,
     this.originalName,
+    this.name,
     this.overview,
     this.posterPath,
     this.firstAirDate,
@@ -53,6 +55,7 @@ class PopularSeries {
     originCountry = json['origin_country'].cast<String>();
 
     originalName = json['original_name'];
+    name = json['name'];
     overview = json['overview'];
 
     posterPath = json['poster_path'];
@@ -68,6 +71,7 @@ class PopularSeries {
     data['id'] = id;
     data['origin_country'] = originCountry;
     data['original_name'] = originalName;
+    data['name'] = name;
     data['overview'] = overview;
 
     data['poster_path'] = posterPath;

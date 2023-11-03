@@ -14,7 +14,7 @@ class SeriesGenresProvider extends StateNotifier<List<SeriesGenres>?> {
 
   final SeriesService _service;
 
-  Future<List<SeriesGenres>?> getTopRatedSeries() async {
+  Future<List<SeriesGenres>?> getSeriesGenres() async {
     state = await _service.getSeriesGenres();
     return state;
   }

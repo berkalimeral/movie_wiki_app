@@ -14,7 +14,7 @@ class PopularSeriesProvider extends StateNotifier<List<PopularSeries>?> {
 
   final SeriesService _service;
 
-  Future<List<PopularSeries>?> getTopRatedSeries() async {
+  Future<List<PopularSeries>?> getPopularSeries() async {
     state = await _service.getPopularSeries();
     return state;
   }

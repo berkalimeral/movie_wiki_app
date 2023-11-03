@@ -18,7 +18,7 @@ class SeriesService {
         Uri(
             scheme: 'https',
             host: apiHost,
-            path: EndPointsMovie.nowPlaying,
+            path: EndPointsSeries.topRated,
             queryParameters: {
               'language': 'tr-TR',
               'page': '1',
