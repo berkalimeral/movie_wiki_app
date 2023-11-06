@@ -15,9 +15,9 @@ class EndPointsSeries {
   static const String popular = '/3/tv/popular';
   static const String genre = '/3/genre/tv/list';
 
-  static String movieDetail(id) => '/3/tv/$id';
+  static String seriesDetail(id) => '/3/tv/$id';
   static String actors(id) => '/3/tv/$id/credits';
-  static String recommendation(id) => '/3/tv/$id/recommendations';
+  static String similar(id) => '/3/tv/$id/similar';
 }
 
 class EndPointsGenres {

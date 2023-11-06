@@ -6,6 +6,9 @@ import 'package:http/http.dart' as https;
 
 import '../../core/constants/api_const.dart';
 
+import '../models/series_detail_model/series_cast_model.dart';
+import '../models/series_detail_model/series_detail_model.dart';
+import '../models/series_detail_model/series_similar_model.dart';
 import '../models/series_models/popular_series_model.dart';
 import '../models/series_models/series_gender_model.dart';
 import '../models/series_models/top_rated_series_model.dart';
@@ -108,6 +111,85 @@ class SeriesService {
     } else {
       log(
         'Something is wrong in getMovieGenres',
+      );
+      return null;
+    }
+  }
+
+  ///Get Series Detail Service
+  Future<SeriesDetailModel?> getSeriesDetailById(int movieId) async {
+    var response = await https.get(
+        Uri(
+          scheme: 'https',
+          host: apiHost,
+          path: EndPointsSeries.seriesDetail(movieId),
+          queryParameters: {
+            'language': 'tr-TR',
+          },
+        ),
+        headers: {
+          'Authorization': apiReadAccessToken,
+        });
+
+    if (response.statusCode == HttpStatus.ok) {
+      var responseBody = jsonDecode(response.body);
+      SeriesDetailModel seriesDetail = SeriesDetailModel.fromJson(responseBody);
+      return seriesDetail;
+    } else {
+      log(
+        'Something is wrong in getSeriesDetailById',
+      );
+      return null;
+    }
+  }
+
+  ///Get Series Casts
+  Future<List<SeriesCast>?> getSeriesCastsById(int? id) async {
+    var response = await https.get(
+        Uri(
+          scheme: 'https',
+          host: apiHost,
+          path: EndPointsSeries.actors(id),
+          queryParameters: {
+            'language': 'tr-TR',
+          },
+        ),
+        headers: {
+          'Authorization': apiReadAccessToken,
+        });
+    if (response.statusCode == HttpStatus.ok) {
+      var responseBody = jsonDecode(response.body);
+      SeriesCastModel seriesCasts = SeriesCastModel.fromJson(responseBody);
+      return seriesCasts.cast;
+    } else {
+      log(
+        'Something is wrong in getSeriesCastsById',
+      );
+      return null;
+    }
+  }
+
+  ///Get Series Similar
+  Future<List<SimilarSeries>?> getSeriesSimilarById(int? id) async {
+    var response = await https.get(
+        Uri(
+          scheme: 'https',
+          host: apiHost,
+          path: EndPointsSeries.similar(id),
+          queryParameters: {
+            'language': 'tr-TR',
+          },
+        ),
+        headers: {
+          'Authorization': apiReadAccessToken,
+        });
+    if (response.statusCode == HttpStatus.ok) {
+      var responseBody = jsonDecode(response.body);
+      SeriesSimilarModel similar = SeriesSimilarModel.fromJson(responseBody);
+      return similar.results;
+    } else {
+      log(
+        'Something is wrong in getSeriesSimilarById',
       );
       return null;
     }

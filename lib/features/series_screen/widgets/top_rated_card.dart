@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
+import 'package:uni_society_app/features/series_detail_screen.dart/view/series_detail_screen.dart';
 
 import '../../../core/constants/api_const.dart';
 import '../../../core/widgets/custom_space.dart';
@@ -26,52 +27,60 @@ class TopRatedCard extends ConsumerWidget {
               itemCount: topRateds?.length,
               itemBuilder: (context, index, realIndex) {
                 TopRateds? topRated = topRateds?[index];
-                return ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(22),
-                    bottomLeft: Radius.circular(22),
-                  ),
-                  child: Card(
-                    child: Row(
-                      children: [
-                        CachedNetworkImage(
-                          imageUrl: '$apiImagePath${topRated?.posterPath}',
-                          placeholder: (context, url) =>
-                              const Center(child: CircularProgressIndicator()),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.broken_image),
-                          width: context.width * 0.25,
-                          fit: BoxFit.fitWidth,
-                          filterQuality: FilterQuality.high,
-                        ),
-                        const CustomSpace(
-                          width: 10,
-                        ),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                topRated?.originalName ?? '',
-                                maxLines: 2,
-                                style: context.textTheme.titleMedium,
-                              ),
-                              Text(
-                                '(${topRated?.name})',
-                                maxLines: 2,
-                                style: context.textTheme.titleMedium,
-                              ),
-                              RatingStarLine(rating: topRated?.voteAverage),
-                              Text(
-                                'Firs Air Date: ${topRated?.firstAirDate}',
-                                maxLines: 2,
-                                style: context.textTheme.titleMedium,
-                              ),
-                            ],
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          SeriesDetailScreen(seriesId: topRated?.id),
+                    ));
+                  },
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(22),
+                      bottomLeft: Radius.circular(22),
+                    ),
+                    child: Card(
+                      child: Row(
+                        children: [
+                          CachedNetworkImage(
+                            imageUrl: '$apiImagePath${topRated?.posterPath}',
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.broken_image),
+                            width: context.width * 0.25,
+                            fit: BoxFit.fitWidth,
+                            filterQuality: FilterQuality.high,
                           ),
-                        ),
-                      ],
+                          const CustomSpace(
+                            width: 10,
+                          ),
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  topRated?.originalName ?? '',
+                                  maxLines: 2,
+                                  style: context.textTheme.titleMedium,
+                                ),
+                                Text(
+                                  '(${topRated?.name})',
+                                  maxLines: 2,
+                                  style: context.textTheme.titleMedium,
+                                ),
+                                RatingStarLine(rating: topRated?.voteAverage),
+                                Text(
+                                  'Firs Air Date: ${topRated?.firstAirDate}',
+                                  maxLines: 2,
+                                  style: context.textTheme.titleMedium,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );

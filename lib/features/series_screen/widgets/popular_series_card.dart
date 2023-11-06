@@ -13,6 +13,7 @@ import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
 import '../../../products/models/series_models/popular_series_model.dart';
 import '../../../core/widgets/rating_star_line.dart';
+import '../../series_detail_screen.dart/view/series_detail_screen.dart';
 
 class PopularSeriesCard extends ConsumerStatefulWidget {
   const PopularSeriesCard({
@@ -50,7 +51,12 @@ class _PopularSeriesCardState extends ConsumerState<PopularSeriesCard> {
               itemBuilder: (context, index) {
                 PopularSeries? popular = populars?[index];
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          SeriesDetailScreen(seriesId: popular.id),
+                    ));
+                  },
                   child: Container(
                     width: context.width * .7,
                     margin: EdgeInsets.all(Attributes().cardPadding),

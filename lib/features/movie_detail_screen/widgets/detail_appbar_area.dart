@@ -1,20 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 
 import '../../../core/constants/api_const.dart';
 import '../../../core/theme/custom_colors.dart';
 import '../../../core/utils/attributes/attributes.dart';
 import '../../../products/models/movie_detail_model/movie_detail_model.dart';
+import '../../../products/models/series_detail_model/series_detail_model.dart';
 
 class DetailAppBarArea extends StatelessWidget {
-  const DetailAppBarArea({
-    super.key,
-    required this.movieDetail,
-  });
+  const DetailAppBarArea({super.key, this.movieDetail, this.seriesDetail});
 
   final MovieDetailModel? movieDetail;
+  final SeriesDetailModel? seriesDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +44,25 @@ class DetailAppBarArea extends StatelessWidget {
             bottomLeft: Radius.circular(Attributes().detailBorderRadius),
             bottomRight: Radius.circular(Attributes().detailBorderRadius),
           ),
-          child: CachedNetworkImage(
-            imageUrl: '$apiImagePath${movieDetail?.posterPath}',
-            placeholder: (context, url) =>
-                const Center(child: CircularProgressIndicator()),
-            errorWidget: (context, url, error) =>
-                const Icon(Icons.broken_image),
-            fit: BoxFit.fill,
-            filterQuality: FilterQuality.high,
-          ),
+          child: seriesDetail == null
+              ? CachedNetworkImage(
+                  imageUrl: '$apiImagePath${movieDetail?.posterPath}',
+                  placeholder: (context, url) =>
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.broken_image),
+                  fit: BoxFit.fill,
+                  filterQuality: FilterQuality.high,
+                )
+              : CachedNetworkImage(
+                  imageUrl: '$apiImagePath${seriesDetail?.posterPath}',
+                  placeholder: (context, url) =>
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.broken_image),
+                  fit: BoxFit.fill,
+                  filterQuality: FilterQuality.high,
+                ),
         ),
       ),
     );

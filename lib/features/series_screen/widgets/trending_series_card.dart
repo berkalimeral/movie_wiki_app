@@ -13,6 +13,7 @@ import '../../../core/theme/custom_colors.dart';
 import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
 import '../../../core/widgets/rating_star_line.dart';
+import '../../series_detail_screen.dart/view/series_detail_screen.dart';
 
 class TrendSeriesCard extends ConsumerStatefulWidget {
   const TrendSeriesCard({
@@ -50,7 +51,12 @@ class _TrendSeriesCardState extends ConsumerState<TrendSeriesCard> {
               itemBuilder: (context, index) {
                 TrendsSeries? popular = populars?[index];
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          SeriesDetailScreen(seriesId: popular.id),
+                    ));
+                  },
                   child: Container(
                     width: context.width * .7,
                     margin: EdgeInsets.all(Attributes().cardPadding),

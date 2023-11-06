@@ -18,9 +18,7 @@ class SimilarList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FutureBuilder<List<SimilarMovie>?>(
-      future: ref
-          .read(movieRecommendationProvider.notifier)
-          .getMovieSimilarById(id),
+      future: ref.read(movieSimilarProvider.notifier).getMovieSimilarById(id),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<SimilarMovie>? similars = snapshot.data;
@@ -29,56 +27,54 @@ class SimilarList extends ConsumerWidget {
             itemCount: similars?.length,
             itemBuilder: (context, index) {
               SimilarMovie? similar = similars?[index];
-              if (similars != null) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => MovieDetailScreen(
-                              movieId: similar?.id,
-                            ),
-                          ));
-                        },
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                              Attributes().cardBorderRadius),
-                          child: CachedNetworkImage(
-                            imageUrl:
-                                '$apiImagePath${similar?.backdropPath ?? '/5pGWjnM62Zs0S1xRf3TDL1Xizr.jpg'}',
-                            placeholder: (context, url) => const Center(
-                                child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.broken_image),
-                            height: 90,
-                            width: 70,
-                            fit: BoxFit.cover,
-                            filterQuality: FilterQuality.high,
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MovieDetailScreen(
+                            movieId: similar?.id,
                           ),
+                        ));
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                            Attributes().cardBorderRadius),
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              '$apiImagePath${similar?.backdropPath ?? '/5pGWjnM62Zs0S1xRf3TDL1Xizr.jpg'}',
+                          placeholder: (context, url) =>
+                              const Center(child: CircularProgressIndicator()),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.broken_image),
+                          height: 90,
+                          width: 70,
+                          fit: BoxFit.cover,
+                          filterQuality: FilterQuality.high,
                         ),
                       ),
-                      const CustomSpace(
-                        height: 5,
+                    ),
+                    const CustomSpace(
+                      height: 5,
+                    ),
+                    Container(
+                      constraints: BoxConstraints(
+                        maxWidth: context.width * 0.2,
+                        maxHeight: context.height * 0.2,
                       ),
-                      Container(
-                        constraints: BoxConstraints(
-                          maxWidth: context.width * 0.2,
-                          maxHeight: context.height * 0.2,
-                        ),
-                        child: Text(
-                          similar?.originalTitle ?? '',
-                          style: context.textTheme.titleSmall,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      child: Text(
+                        similar?.originalTitle ?? '',
+                        style: context.textTheme.titleSmall,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ],
-                  ),
-                );
-              }
+                    ),
+                  ],
+                ),
+              );
             },
           );
         } else {

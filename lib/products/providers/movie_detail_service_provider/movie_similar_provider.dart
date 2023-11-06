@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/movie_detail_model/movie_similar_model.dart';
 import '../../service/movie_service.dart';
 
-final movieRecommendationProvider =
-    StateNotifierProvider<MovieRecommendationProvider, List<SimilarMovie>?>(
-        (ref) => MovieRecommendationProvider(MovieService()));
+final movieSimilarProvider =
+    StateNotifierProvider<MovieSimilarProvider, List<SimilarMovie>?>(
+        (ref) => MovieSimilarProvider(MovieService()));
 
-class MovieRecommendationProvider extends StateNotifier<List<SimilarMovie>?> {
-  MovieRecommendationProvider(this._service) : super(null);
+class MovieSimilarProvider extends StateNotifier<List<SimilarMovie>?> {
+  MovieSimilarProvider(this._service) : super(null);
 
   final MovieService _service;
 

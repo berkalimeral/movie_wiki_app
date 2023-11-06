@@ -7,16 +7,19 @@ import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
 import '../../../core/widgets/rating_star_line.dart';
 import '../../../products/models/movie_detail_model/movie_detail_model.dart';
+import '../../../products/models/series_detail_model/series_detail_model.dart';
 import 'cast_list.dart';
 import 'similar_list.dart';
 
 class DetailBodyArea extends StatelessWidget {
   const DetailBodyArea({
     super.key,
-    required this.movieDetail,
+    this.movieDetail,
+    this.seriesDetail,
   });
 
   final MovieDetailModel? movieDetail;
+  final SeriesDetailModel? seriesDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +35,16 @@ class DetailBodyArea extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                    child: Text(
-                  movieDetail?.originalTitle ?? '',
-                  maxLines: 2,
-                )),
+                  child: seriesDetail == null
+                      ? Text(
+                          movieDetail?.originalTitle ?? '',
+                          maxLines: 2,
+                        )
+                      : Text(
+                          seriesDetail?.originalName ?? '',
+                          maxLines: 2,
+                        ),
+                ),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -46,11 +55,16 @@ class DetailBodyArea extends StatelessWidget {
                 ),
               ],
             ),
-            RatingStarLine(rating: movieDetail?.voteAverage),
+            RatingStarLine(
+                rating: seriesDetail == null
+                    ? movieDetail?.voteAverage
+                    : seriesDetail?.voteAverage),
             SizedBox(
               height: context.height * 0.1,
               child: ListView.separated(
-                  itemCount: movieDetail!.genres!.length,
+                  itemCount: seriesDetail == null
+                      ? movieDetail!.genres!.length
+                      : seriesDetail!.genres!.length,
                   scrollDirection: Axis.horizontal,
                   separatorBuilder: (context, index) => const CustomSpace(
                         width: 5,
@@ -61,10 +75,15 @@ class DetailBodyArea extends StatelessWidget {
                           EdgeInsets.only(left: Attributes().genderCardPadding),
                       child: Chip(
                         backgroundColor: CustomColorsDark.chipColorDark,
-                        label: Text(
-                          movieDetail?.genres?[index].name ?? '',
-                          style: context.textTheme.titleSmall,
-                        ),
+                        label: seriesDetail == null
+                            ? Text(
+                                movieDetail?.genres?[index].name ?? '',
+                                style: context.textTheme.titleSmall,
+                              )
+                            : Text(
+                                seriesDetail?.genres?[index].name ?? '',
+                                style: context.textTheme.titleSmall,
+                              ),
                       ),
                     );
                   }),
@@ -78,12 +97,19 @@ class DetailBodyArea extends StatelessWidget {
                     const CustomSpace(
                       height: 3,
                     ),
-                    Text(
-                        movieDetail?.runtime
-                                .toString()
-                                .toHour(movieDetail?.runtime) ??
-                            '',
-                        style: context.textTheme.titleSmall),
+                    seriesDetail == null
+                        ? Text(
+                            movieDetail?.runtime
+                                    .toString()
+                                    .toHour(movieDetail?.runtime) ??
+                                '',
+                            style: context.textTheme.titleSmall)
+                        : Text(
+                            seriesDetail?.episodeRunTime
+                                    .toString()
+                                    .toHour(seriesDetail?.episodeRunTime) ??
+                                '',
+                            style: context.textTheme.titleSmall),
                   ],
                 ),
                 Column(
