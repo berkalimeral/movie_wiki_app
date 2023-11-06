@@ -15,7 +15,7 @@ class AppTextTheme {
       ),
       bodySmall: TextStyle(
         fontSize: 16,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w300,
       ),
       displayLarge: TextStyle(
         fontSize: 26,

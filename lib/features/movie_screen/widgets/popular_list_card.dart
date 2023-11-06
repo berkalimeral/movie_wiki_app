@@ -13,6 +13,7 @@ import 'package:collection/collection.dart';
 import '../../../core/constants/api_const.dart';
 import '../../../core/utils/attributes/attributes.dart';
 import '../../../products/models/movie_models/movie_genres_model.dart';
+import '../../movie_detail_screen/view/movie_detail_screen.dart';
 
 class PopularList extends ConsumerStatefulWidget {
   const PopularList({
@@ -51,7 +52,13 @@ class _PopularListState extends ConsumerState<PopularList> {
                 itemBuilder: (context, index) {
                   Populars? popular = populars?[index];
                   return GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => MovieDetailScreen(
+                          movieId: popular.id,
+                        ),
+                      ));
+                    },
                     child: Container(
                       width: context.width * .7,
                       margin: EdgeInsets.all(Attributes().cardPadding),

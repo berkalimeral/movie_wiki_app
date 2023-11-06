@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:uni_society_app/products/service/movie_service.dart';
 
 import '../../models/movie_detail_model/movie_detail_model.dart';
+import '../../service/movie_service.dart';
 
 final movieDetailProvider =
     StateNotifierProvider<MovieDetailProvider, MovieDetailModel?>(

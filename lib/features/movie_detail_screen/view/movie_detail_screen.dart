@@ -34,6 +34,7 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
             if (snapshot.hasData) {
               MovieDetailModel? movieDetail = snapshot.data;
               return CustomScrollView(
+                physics: const BouncingScrollPhysics(),
                 slivers: [
                   DetailAppBarArea(movieDetail: movieDetail),
                   DetailBodyArea(movieDetail: movieDetail),

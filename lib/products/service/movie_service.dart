@@ -7,12 +7,15 @@ import 'package:uni_society_app/products/models/movie_models/movie_genres_model.
 import 'package:uni_society_app/products/models/movie_models/now_playing_model.dart';
 
 import '../../core/constants/api_const.dart';
+import '../models/movie_detail_model/movie_casts_model.dart';
 import '../models/movie_detail_model/movie_detail_model.dart';
 import '../models/movie_models/popular_movie_model.dart';
 import '../models/movie_models/trend_movie_model.dart';
+import '../models/movie_detail_model/movie_similar_model.dart';
 import '../network/network_values.dart';
 
 class MovieService {
+  ///Get Now Playing Movies
   Future<List<NowPlays>?> getNowPlayingMovies() async {
     var response = await https.get(
         Uri(
@@ -38,6 +41,7 @@ class MovieService {
     }
   }
 
+  ///Get Popular Movies
   Future<List<Populars>?> getPopularMovies() async {
     var response = await https.get(
         Uri(
@@ -63,6 +67,7 @@ class MovieService {
     }
   }
 
+  ///Get Trending Movie
   Future<List<Trends>?> getTrendingMovies() async {
     var response = await https.get(
         Uri(
@@ -87,6 +92,7 @@ class MovieService {
     }
   }
 
+  ///Get Movie Genres
   Future<List<MovieGenres>?> getMovieGenres() async {
     var response = await https.get(
         Uri(
@@ -112,6 +118,7 @@ class MovieService {
     }
   }
 
+  ///Get Movie Detail Service
   Future<MovieDetailModel?> getMovieDetailById(int movieId) async {
     var response = await https.get(
         Uri(
@@ -133,6 +140,58 @@ class MovieService {
     } else {
       log(
         'Something is wrong in getMovieDetailById',
+      );
+      return null;
+    }
+  }
+
+  ///Get Movie Casts
+  Future<List<Cast>?> getMovieCastsById(int? id) async {
+    var response = await https.get(
+        Uri(
+          scheme: 'https',
+          host: apiHost,
+          path: EndPointsMovie.actors(id),
+          queryParameters: {
+            'language': 'tr-TR',
+          },
+        ),
+        headers: {
+          'Authorization': apiReadAccessToken,
+        });
+    if (response.statusCode == HttpStatus.ok) {
+      var responseBody = jsonDecode(response.body);
+      CastsModel casts = CastsModel.fromJson(responseBody);
+      return casts.cast;
+    } else {
+      log(
+        'Something is wrong in getMovieCastsById',
+      );
+      return null;
+    }
+  }
+
+  ///Get Movie Casts
+  Future<List<SimilarMovie>?> getMovieSimilarById(int? id) async {
+    var response = await https.get(
+        Uri(
+          scheme: 'https',
+          host: apiHost,
+          path: EndPointsMovie.similar(id),
+          queryParameters: {
+            'language': 'tr-TR',
+          },
+        ),
+        headers: {
+          'Authorization': apiReadAccessToken,
+        });
+    if (response.statusCode == HttpStatus.ok) {
+      var responseBody = jsonDecode(response.body);
+      SimilarModel similar = SimilarModel.fromJson(responseBody);
+      return similar.results;
+    } else {
+      log(
+        'Something is wrong in getMovieRecommendationById',
       );
       return null;
     }

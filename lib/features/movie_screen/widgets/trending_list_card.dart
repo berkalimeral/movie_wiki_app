@@ -13,6 +13,7 @@ import '../../../core/utils/attributes/attributes.dart';
 import '../../../products/models/movie_models/movie_genres_model.dart';
 import '../../../products/models/movie_models/trend_movie_model.dart';
 import '../../../products/providers/movie_service_provider/genres_provider.dart';
+import '../../movie_detail_screen/view/movie_detail_screen.dart';
 
 class TrendList extends ConsumerStatefulWidget {
   const TrendList({
@@ -51,7 +52,13 @@ class _TrendListState extends ConsumerState<TrendList> {
                 itemBuilder: (context, index) {
                   Trends? trend = trends?[index];
                   return GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => MovieDetailScreen(
+                          movieId: trend.id,
+                        ),
+                      ));
+                    },
                     child: Container(
                       width: context.width * .7,
                       margin: EdgeInsets.all(Attributes().cardPadding),

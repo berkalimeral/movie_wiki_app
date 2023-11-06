@@ -6,6 +6,7 @@ class EndPointsMovie {
 
   static String movieDetail(id) => '/3/movie/$id';
   static String actors(id) => '/3/movie/$id/credits';
+  static String similar(id) => '/3/movie/$id/similar';
 }
 
 class EndPointsSeries {
@@ -16,6 +17,7 @@ class EndPointsSeries {
 
   static String movieDetail(id) => '/3/tv/$id';
   static String actors(id) => '/3/tv/$id/credits';
+  static String recommendation(id) => '/3/tv/$id/recommendations';
 }
 
 class EndPointsGenres {
