@@ -1,43 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:uni_society_app/core/constants/app_constants.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
+import 'package:uni_society_app/core/utils/attributes/attributes.dart';
+import 'package:uni_society_app/core/widgets/rating_star_line.dart';
+import 'package:uni_society_app/features/movie_detail_screen/widgets/gender_area.dart';
+import 'package:uni_society_app/features/series_detail_screen.dart/widgets/series_similar_list.dart';
 
+import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/custom_colors.dart';
-import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
-import '../../../core/widgets/rating_star_line.dart';
-import '../../../products/models/movie_detail_model/movie_detail_model.dart';
-import 'cast_list.dart';
-import 'gender_area.dart';
-import 'similar_list.dart';
+import '../../../products/models/series_detail_model/series_detail_model.dart';
+import 'series_cast_list.dart';
+import 'series_season_list.dart';
 
-class DetailBodyArea extends StatelessWidget {
-  const DetailBodyArea({
-    super.key,
-    this.movieDetail,
-  });
+class SeriesDetailBodyArea extends StatelessWidget {
+  const SeriesDetailBodyArea({super.key, required this.seriesDetail});
 
-  final MovieDetailModel? movieDetail;
+  final SeriesDetailModel? seriesDetail;
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: Attributes().detailPaddingHorizontal,
-            vertical: Attributes().scaffoldPaddingVertical),
+          horizontal: Attributes().detailPaddingHorizontal,
+          vertical: Attributes().scaffoldPaddingVertical,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  child: Text(
-                    movieDetail?.originalTitle ?? '',
-                    maxLines: 2,
-                  ),
-                ),
+                Text(seriesDetail?.originalName ?? ''),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -48,8 +42,10 @@ class DetailBodyArea extends StatelessWidget {
                 ),
               ],
             ),
-            RatingStarLine(rating: movieDetail?.voteAverage),
-            BuildGenderArea(movieDetail: movieDetail),
+            RatingStarLine(rating: seriesDetail?.voteAverage),
+            BuildGenderArea(
+              seriesDetail: seriesDetail,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -59,12 +55,15 @@ class DetailBodyArea extends StatelessWidget {
                     const CustomSpace(
                       height: 3,
                     ),
-                    Text(
-                        movieDetail?.runtime
-                                .toString()
-                                .toHour(movieDetail?.runtime) ??
-                            '',
-                        style: context.textTheme.titleSmall)
+                    seriesDetail!.episodeRunTime!.isNotEmpty
+                        ? Text(
+                            seriesDetail?.episodeRunTime?.first
+                                    .toString()
+                                    .toHour(
+                                        seriesDetail?.episodeRunTime?.first) ??
+                                '',
+                            style: context.textTheme.titleSmall)
+                        : Text('No Info', style: context.textTheme.titleSmall),
                   ],
                 ),
                 Column(
@@ -73,17 +72,17 @@ class DetailBodyArea extends StatelessWidget {
                     const CustomSpace(
                       height: 3,
                     ),
-                    Text(movieDetail?.spokenLanguages?.first.name ?? '',
+                    Text(seriesDetail?.spokenLanguages?.first.englishName ?? '',
                         style: context.textTheme.titleSmall),
                   ],
                 ),
                 Column(
                   children: [
-                    Text(revenue, style: context.textTheme.titleMedium),
+                    Text(season, style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
                     ),
-                    Text('${movieDetail?.revenue.toString()}\$',
+                    Text(seriesDetail?.numberOfSeasons.toString() ?? '',
                         style: context.textTheme.titleSmall),
                   ],
                 ),
@@ -95,8 +94,16 @@ class DetailBodyArea extends StatelessWidget {
               height: 5,
             ),
             Text(
-              movieDetail?.overview ?? '',
+              seriesDetail?.overview ?? '',
               style: context.textTheme.bodySmall,
+            ),
+            const CustomSpace(
+              height: 5,
+            ),
+            const Text(season),
+            SizedBox(
+              height: context.height * 0.26,
+              child: SeasonList(seriesSeason: seriesDetail?.seasons),
             ),
             const CustomSpace(
               height: 5,
@@ -106,8 +113,8 @@ class DetailBodyArea extends StatelessWidget {
               height: 5,
             ),
             SizedBox(
-              height: context.height * 0.18,
-              child: CastList(id: movieDetail?.id),
+              height: context.height * 0.23,
+              child: SeriesCastList(id: seriesDetail?.id),
             ),
             const CustomSpace(
               height: 5,
@@ -118,7 +125,7 @@ class DetailBodyArea extends StatelessWidget {
             ),
             SizedBox(
               height: context.height * 0.21,
-              child: SimilarList(id: movieDetail?.id),
+              child: SeriesSimilarList(id: seriesDetail?.id),
             ),
           ],
         ),

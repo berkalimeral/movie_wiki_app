@@ -4,7 +4,7 @@ import 'package:uni_society_app/products/providers/series_detail_service_provide
 
 import '../../../products/models/series_detail_model/series_detail_model.dart';
 import '../../movie_detail_screen/widgets/detail_appbar_area.dart';
-import '../../movie_detail_screen/widgets/detail_body_area.dart';
+import '../widgets/series_detail_body.dart';
 
 class SeriesDetailScreen extends ConsumerStatefulWidget {
   const SeriesDetailScreen({super.key, required this.seriesId});
@@ -30,7 +30,7 @@ class _SeriesDetailScreenState extends ConsumerState<SeriesDetailScreen> {
                 physics: const BouncingScrollPhysics(),
                 slivers: [
                   DetailAppBarArea(seriesDetail: seriesDetail),
-                  DetailBodyArea(seriesDetail: seriesDetail),
+                  SeriesDetailBodyArea(seriesDetail: seriesDetail),
                 ],
               );
             } else {

@@ -15,3 +15,6 @@ const String revenue = 'Revenue';
 const String description = 'Description';
 const String casts = 'Casts';
 const String similar = 'Similar';
+
+///App Series Detail Constants
+const String season = 'Season';

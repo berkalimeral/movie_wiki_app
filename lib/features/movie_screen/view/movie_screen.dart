@@ -25,16 +25,16 @@ class MovieScreen extends StatelessWidget {
             children: const [
               Text(nowPlaying),
               CustomSpace(
-                height: 20,
+                height: 10,
               ),
               NowPlayingSlider(),
               CustomSpace(
-                height: 20,
+                height: 10,
               ),
               Text(popular),
               PopularList(),
               CustomSpace(
-                height: 20,
+                height: 10,
               ),
               Text(trendMovie),
               TrendList(),

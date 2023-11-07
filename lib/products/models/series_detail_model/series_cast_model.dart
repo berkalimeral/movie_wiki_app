@@ -1,8 +1,7 @@
 class SeriesCastModel {
   List<SeriesCast>? cast;
-  int? id;
 
-  SeriesCastModel({this.cast, this.id});
+  SeriesCastModel({this.cast});
 
   SeriesCastModel.fromJson(Map<String, dynamic> json) {
     if (json['cast'] != null) {
@@ -11,7 +10,6 @@ class SeriesCastModel {
         cast!.add(SeriesCast.fromJson(v));
       });
     }
-    id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -19,7 +17,6 @@ class SeriesCastModel {
     if (cast != null) {
       data['cast'] = cast!.map((v) => v.toJson()).toList();
     }
-    data['id'] = id;
     return data;
   }
 }

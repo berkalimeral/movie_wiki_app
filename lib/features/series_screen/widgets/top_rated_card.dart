@@ -72,7 +72,7 @@ class TopRatedCard extends ConsumerWidget {
                                 ),
                                 RatingStarLine(rating: topRated?.voteAverage),
                                 Text(
-                                  'Firs Air Date: ${topRated?.firstAirDate}',
+                                  'First Air Date: ${topRated?.firstAirDate}',
                                   maxLines: 2,
                                   style: context.textTheme.titleMedium,
                                 ),

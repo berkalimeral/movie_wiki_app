@@ -8,9 +8,13 @@ extension BuildContextExtension on BuildContext {
 }
 
 extension StringExtension on String {
-  String toHour(value) {
-    final int hour = value ~/ 60;
-    final int minutes = value % 60;
-    return '${hour.toString().padLeft(2, "0")}h ${minutes.toString().padLeft(2, "0")}min';
+  String? toHour(int? value) {
+    if (value != null) {
+      final int hour = value ~/ 60;
+      final int minutes = value % 60;
+      return '${hour.toString().padLeft(2, "0")}h ${minutes.toString().padLeft(2, "0")}min';
+    } else {
+      return null;
+    }
   }
 }

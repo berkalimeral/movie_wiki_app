@@ -22,19 +22,19 @@ class SeriesScreen extends StatelessWidget {
             children: const [
               Text(topRated),
               CustomSpace(
-                height: 20,
+                height: 10,
               ),
               TopRatedCard(),
               CustomSpace(
-                height: 20,
+                height: 10,
               ),
               Text(popularSeries),
               CustomSpace(
-                height: 20,
+                height: 10,
               ),
               PopularSeriesCard(),
               CustomSpace(
-                height: 20,
+                height: 10,
               ),
               Text(trendSeries),
               TrendSeriesCard(),

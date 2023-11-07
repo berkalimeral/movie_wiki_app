@@ -240,6 +240,7 @@ class Seasons {
   int? episodeCount;
   int? id;
   String? name;
+  String? overview;
   String? posterPath;
   double? voteAverage;
 
@@ -248,6 +249,7 @@ class Seasons {
       this.episodeCount,
       this.id,
       this.name,
+      this.overview,
       this.posterPath,
       this.voteAverage});
 
@@ -256,6 +258,7 @@ class Seasons {
     episodeCount = json['episode_count'];
     id = json['id'];
     name = json['name'];
+    overview = json['overview'];
     posterPath = json['poster_path'];
     voteAverage = json['vote_average'];
   }
@@ -266,6 +269,7 @@ class Seasons {
     data['episode_count'] = episodeCount;
     data['id'] = id;
     data['name'] = name;
+    data['overview'] = overview;
     data['poster_path'] = posterPath;
     data['vote_average'] = voteAverage;
     return data;
