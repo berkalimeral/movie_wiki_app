@@ -31,7 +31,11 @@ class SeriesDetailBodyArea extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(seriesDetail?.originalName ?? ''),
+                Container(
+                    constraints: BoxConstraints(
+                        maxHeight: context.width * 0.5,
+                        maxWidth: context.width * 0.6),
+                    child: Text(seriesDetail?.originalName ?? '')),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(

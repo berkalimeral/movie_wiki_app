@@ -6,6 +6,7 @@ import 'package:http/http.dart' as https;
 
 import '../../core/constants/api_const.dart';
 
+import '../models/cast_model/series_credit_cast_model.dart';
 import '../models/series_detail_model/series_cast_model.dart';
 import '../models/series_detail_model/series_detail_model.dart';
 import '../models/series_detail_model/series_similar_model.dart';
@@ -96,7 +97,7 @@ class SeriesService {
         Uri(
             scheme: 'https',
             host: apiHost,
-            path: EndPointsGenres.seriesGenres,
+            path: EndPointsBoth.seriesGenres,
             queryParameters: {
               'language': 'tr',
             }),
@@ -190,6 +191,32 @@ class SeriesService {
     } else {
       log(
         'Something is wrong in getSeriesSimilarById',
+      );
+      return null;
+    }
+  }
+
+  ///Get Series Credit
+  Future<List<SeriesCreditCast>?> getSeriesCreditCast(int? id) async {
+    var response = await https.get(
+        Uri(
+          scheme: 'https',
+          host: apiHost,
+          path: EndPointsSeries.credit(id),
+          queryParameters: {
+            'language': 'tr-TR',
+          },
+        ),
+        headers: {
+          'Authorization': apiReadAccessToken,
+        });
+    if (response.statusCode == HttpStatus.ok) {
+      var responseBody = jsonDecode(response.body);
+      SeriesCreditsModel credit = SeriesCreditsModel.fromJson(responseBody);
+      return credit.cast;
+    } else {
+      log(
+        'Something is wrong in getSeriesCreditCast',
       );
       return null;
     }

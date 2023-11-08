@@ -17,4 +17,11 @@ extension StringExtension on String {
       return null;
     }
   }
+
+  String calcAge() {
+    String year = split('-').first;
+    String thisYear = DateTime.now().year.toString();
+    String age = (int.tryParse(thisYear)! - int.tryParse(year)!).toString();
+    return age;
+  }
 }

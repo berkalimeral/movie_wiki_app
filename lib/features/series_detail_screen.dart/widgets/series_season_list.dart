@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 
 import '../../../core/constants/api_const.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/custom_colors.dart';
 import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
@@ -38,7 +39,7 @@ class SeasonList extends StatelessWidget {
             children: [
               CachedNetworkImage(
                 imageUrl: season?.posterPath == null
-                    ? 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwebcolours.ca%2F2020%2F09%2F07%2Futilisation-de-la-balise-en-html%2F&psig=AOvVaw1NnkBb8TwfA9rK5WJGBSt-&ust=1699455000747000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCODp2a6RsoIDFQAAAAAdAAAAABAJ'
+                    ? dummyPath
                     : '$apiImagePath${season?.posterPath}',
                 placeholder: (context, url) =>
                     const Center(child: CircularProgressIndicator()),

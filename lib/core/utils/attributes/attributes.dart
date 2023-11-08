@@ -8,6 +8,7 @@ class Attributes {
   final double cardBorderRadius = 12;
   final double genderBorderRadius = 20;
   final double detailBorderRadius = 24;
+  final double circleAvatarRadius = 40;
 
   final double appBarElevation = 0;
 }

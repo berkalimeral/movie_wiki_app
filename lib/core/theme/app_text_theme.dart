@@ -39,7 +39,7 @@ class AppTextTheme {
       ),
       titleSmall: TextStyle(
         fontSize: 12,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w300,
       ),
     );
   }
