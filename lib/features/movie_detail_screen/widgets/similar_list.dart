@@ -45,7 +45,7 @@ class SimilarList extends ConsumerWidget {
                             Attributes().cardBorderRadius),
                         child: CachedNetworkImage(
                           imageUrl:
-                              '$apiImagePath${similar?.backdropPath ?? '/5pGWjnM62Zs0S1xRf3TDL1Xizr.jpg'}',
+                              '${ApiConstants.apiImagePath}${similar?.backdropPath ?? '/5pGWjnM62Zs0S1xRf3TDL1Xizr.jpg'}',
                           placeholder: (context, url) =>
                               const Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) =>

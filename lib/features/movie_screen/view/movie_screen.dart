@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:uni_society_app/core/constants/app_constants.dart';
@@ -22,22 +23,22 @@ class MovieScreen extends StatelessWidget {
               horizontal: Attributes().scaffoldPaddingHorizontal),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(nowPlaying),
-              CustomSpace(
+            children: [
+              Text(AppConstants.nowPlaying.tr()),
+              const CustomSpace(
                 height: 10,
               ),
-              NowPlayingSlider(),
-              CustomSpace(
+              const NowPlayingSlider(),
+              const CustomSpace(
                 height: 10,
               ),
-              Text(popular),
-              PopularList(),
-              CustomSpace(
+              Text(AppConstants.popular.tr()),
+              const PopularList(),
+              const CustomSpace(
                 height: 10,
               ),
-              Text(trendMovie),
-              TrendList(),
+              Text(AppConstants.trendMovie.tr()),
+              const TrendList(),
             ],
           ),
         ),

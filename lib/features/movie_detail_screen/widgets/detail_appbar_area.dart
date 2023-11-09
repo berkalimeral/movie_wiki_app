@@ -46,7 +46,8 @@ class DetailAppBarArea extends StatelessWidget {
           ),
           child: seriesDetail == null
               ? CachedNetworkImage(
-                  imageUrl: '$apiImagePath${movieDetail?.posterPath}',
+                  imageUrl:
+                      '${ApiConstants.apiImagePath}${movieDetail?.posterPath}',
                   placeholder: (context, url) =>
                       const Center(child: CircularProgressIndicator()),
                   errorWidget: (context, url, error) =>
@@ -55,7 +56,8 @@ class DetailAppBarArea extends StatelessWidget {
                   filterQuality: FilterQuality.high,
                 )
               : CachedNetworkImage(
-                  imageUrl: '$apiImagePath${seriesDetail?.posterPath}',
+                  imageUrl:
+                      '${ApiConstants.apiImagePath}${seriesDetail?.posterPath}',
                   placeholder: (context, url) =>
                       const Center(child: CircularProgressIndicator()),
                   errorWidget: (context, url, error) =>

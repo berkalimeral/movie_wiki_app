@@ -2,13 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
-import 'package:uni_society_app/core/theme/custom_colors.dart';
-import 'package:uni_society_app/core/utils/attributes/attributes.dart';
-import 'package:uni_society_app/core/widgets/cast_detail_sheet.dart';
-import 'package:uni_society_app/products/providers/series_detail_service_provider/series_casts_provider.dart';
 
 import '../../../core/constants/api_const.dart';
+import '../../../core/utils/attributes/attributes.dart';
+import '../../../core/widgets/cast_detail_sheet.dart';
 import '../../../products/models/series_detail_model/series_cast_model.dart';
+import '../../../products/providers/series_detail_service_provider/series_casts_provider.dart';
 
 class SeriesCastList extends ConsumerWidget {
   const SeriesCastList({super.key, required this.id});
@@ -42,7 +41,8 @@ class SeriesCastList extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(
                               Attributes().cardBorderRadius),
                           child: CachedNetworkImage(
-                            imageUrl: '$apiImagePath${cast?.profilePath}',
+                            imageUrl:
+                                '${ApiConstants.apiImagePath}${cast?.profilePath}',
                             placeholder: (context, url) => const Center(
                                 child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) =>

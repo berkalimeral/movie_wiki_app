@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_constants.dart';
@@ -19,8 +20,8 @@ class SeriesScreen extends StatelessWidget {
           padding: EdgeInsets.all(Attributes().scaffoldPaddingHorizontal),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(topRated),
+            children: [
+              Text(AppConstants.topRated.tr()),
               CustomSpace(
                 height: 10,
               ),
@@ -28,7 +29,7 @@ class SeriesScreen extends StatelessWidget {
               CustomSpace(
                 height: 10,
               ),
-              Text(popularSeries),
+              Text(AppConstants.popularSeries.tr()),
               CustomSpace(
                 height: 10,
               ),
@@ -36,7 +37,7 @@ class SeriesScreen extends StatelessWidget {
               CustomSpace(
                 height: 10,
               ),
-              Text(trendSeries),
+              Text(AppConstants.trendSeries.tr()),
               TrendSeriesCard(),
             ],
           ),

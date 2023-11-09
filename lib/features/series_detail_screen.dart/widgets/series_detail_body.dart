@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 import 'package:uni_society_app/core/utils/attributes/attributes.dart';
@@ -55,7 +56,8 @@ class SeriesDetailBodyArea extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text(length, style: context.textTheme.titleMedium),
+                    Text(AppConstants.length.tr(),
+                        style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
                     ),
@@ -72,7 +74,8 @@ class SeriesDetailBodyArea extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(language, style: context.textTheme.titleMedium),
+                    Text(AppConstants.language.tr(),
+                        style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
                     ),
@@ -82,7 +85,8 @@ class SeriesDetailBodyArea extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(season, style: context.textTheme.titleMedium),
+                    Text(AppConstants.season.tr(),
+                        style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
                     ),
@@ -93,7 +97,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
               ],
             ),
             const Divider(),
-            const Text(description),
+            const Text(AppConstants.description),
             const CustomSpace(
               height: 5,
             ),
@@ -104,7 +108,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
             const CustomSpace(
               height: 5,
             ),
-            const Text(season),
+            Text(AppConstants.season.tr()),
             SizedBox(
               height: context.height * 0.26,
               child: SeasonList(seriesSeason: seriesDetail?.seasons),
@@ -112,7 +116,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
             const CustomSpace(
               height: 5,
             ),
-            const Text(casts),
+            Text(AppConstants.casts.tr()),
             const CustomSpace(
               height: 5,
             ),
@@ -123,7 +127,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
             const CustomSpace(
               height: 5,
             ),
-            const Text(similar),
+            Text(AppConstants.similar.tr()),
             const CustomSpace(
               height: 5,
             ),

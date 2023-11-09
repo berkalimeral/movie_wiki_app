@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:uni_society_app/core/constants/app_constants.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
@@ -55,7 +56,8 @@ class DetailBodyArea extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text(length, style: context.textTheme.titleMedium),
+                    Text(AppConstants.length.tr(),
+                        style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
                     ),
@@ -69,7 +71,8 @@ class DetailBodyArea extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(language, style: context.textTheme.titleMedium),
+                    Text(AppConstants.language.tr(),
+                        style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
                     ),
@@ -79,7 +82,8 @@ class DetailBodyArea extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(revenue, style: context.textTheme.titleMedium),
+                    Text(AppConstants.revenue.tr(),
+                        style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
                     ),
@@ -90,7 +94,7 @@ class DetailBodyArea extends StatelessWidget {
               ],
             ),
             const Divider(),
-            const Text(description),
+            Text(AppConstants.description.tr()),
             const CustomSpace(
               height: 5,
             ),
@@ -101,7 +105,7 @@ class DetailBodyArea extends StatelessWidget {
             const CustomSpace(
               height: 5,
             ),
-            const Text(casts),
+            Text(AppConstants.casts.tr()),
             const CustomSpace(
               height: 5,
             ),
@@ -112,7 +116,7 @@ class DetailBodyArea extends StatelessWidget {
             const CustomSpace(
               height: 5,
             ),
-            const Text(similar),
+            Text(AppConstants.similar.tr()),
             const CustomSpace(
               height: 5,
             ),

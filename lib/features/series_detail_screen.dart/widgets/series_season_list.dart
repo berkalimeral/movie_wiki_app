@@ -39,8 +39,8 @@ class SeasonList extends StatelessWidget {
             children: [
               CachedNetworkImage(
                 imageUrl: season?.posterPath == null
-                    ? dummyPath
-                    : '$apiImagePath${season?.posterPath}',
+                    ? AppConstants.dummyPath
+                    : '${ApiConstants.apiImagePath}${season?.posterPath}',
                 placeholder: (context, url) =>
                     const Center(child: CircularProgressIndicator()),
                 errorWidget: (context, url, error) =>

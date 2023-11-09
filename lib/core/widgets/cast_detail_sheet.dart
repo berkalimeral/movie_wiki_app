@@ -47,9 +47,9 @@ class CastDetailSheet {
                           radius: Attributes().circleAvatarRadius,
                           backgroundImage: star?.profilePath != null
                               ? NetworkImage(
-                                  '$apiImagePath${star?.profilePath}',
+                                  '${ApiConstants.apiImagePath}${star?.profilePath}',
                                 )
-                              : const NetworkImage(dummyPath),
+                              : const NetworkImage(AppConstants.dummyPath),
                         ),
                         Text(star?.name ?? ''),
                         Text(
@@ -119,8 +119,9 @@ class CastDetailSheet {
                                                     imageUrl: movies
                                                                 ?.backdropPath !=
                                                             null
-                                                        ? '$apiImagePath${movies?.backdropPath}'
-                                                        : dummyPath,
+                                                        ? '${ApiConstants.apiImagePath}${movies?.backdropPath}'
+                                                        : AppConstants
+                                                            .dummyPath,
                                                     placeholder: (context,
                                                             url) =>
                                                         const Center(
@@ -225,9 +226,9 @@ class CastDetailSheet {
                           radius: Attributes().circleAvatarRadius,
                           backgroundImage: star?.profilePath != null
                               ? NetworkImage(
-                                  '$apiImagePath${star?.profilePath}',
+                                  '${ApiConstants.apiImagePath}${star?.profilePath}',
                                 )
-                              : const NetworkImage(dummyPath),
+                              : const NetworkImage(AppConstants.dummyPath),
                         ),
                         Text(star?.name ?? ''),
                         Text(
@@ -298,8 +299,9 @@ class CastDetailSheet {
                                                     imageUrl: series
                                                                 ?.backdropPath !=
                                                             null
-                                                        ? '$apiImagePath${series?.backdropPath}'
-                                                        : dummyPath,
+                                                        ? '${ApiConstants.apiImagePath}${series?.backdropPath}'
+                                                        : AppConstants
+                                                            .dummyPath,
                                                     placeholder: (context,
                                                             url) =>
                                                         const Center(

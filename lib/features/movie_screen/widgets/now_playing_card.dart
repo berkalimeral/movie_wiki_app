@@ -42,7 +42,8 @@ class NowPlayingSlider extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CachedNetworkImage(
-                            imageUrl: '$apiImagePath${nowPlay?.posterPath}',
+                            imageUrl:
+                                '${ApiConstants.apiImagePath}${nowPlay?.posterPath}',
                             placeholder: (context, url) => const Center(
                                 child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) =>

@@ -2,9 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
-import 'package:uni_society_app/products/models/series_models/series_gender_model.dart';
-import 'package:uni_society_app/products/providers/series_service_provider/popular_series_provider.dart';
-import 'package:uni_society_app/products/providers/series_service_provider/series_genres_provider.dart';
 import 'package:collection/collection.dart';
 
 import '../../../core/constants/api_const.dart';
@@ -13,6 +10,9 @@ import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
 import '../../../products/models/series_models/popular_series_model.dart';
 import '../../../core/widgets/rating_star_line.dart';
+import '../../../products/models/series_models/series_gender_model.dart';
+import '../../../products/providers/series_service_provider/popular_series_provider.dart';
+import '../../../products/providers/series_service_provider/series_genres_provider.dart';
 import '../../series_detail_screen.dart/view/series_detail_screen.dart';
 
 class PopularSeriesCard extends ConsumerStatefulWidget {
@@ -73,7 +73,8 @@ class _PopularSeriesCardState extends ConsumerState<PopularSeriesCard> {
                     child: Row(
                       children: [
                         CachedNetworkImage(
-                          imageUrl: '$apiImagePath${popular?.posterPath}',
+                          imageUrl:
+                              '${ApiConstants.apiImagePath}${popular?.posterPath}',
                           placeholder: (context, url) =>
                               const Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) =>

@@ -2,17 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
-import 'package:uni_society_app/core/theme/custom_colors.dart';
-import 'package:uni_society_app/core/widgets/custom_space.dart';
-import 'package:uni_society_app/core/widgets/rating_star_line.dart';
-import 'package:uni_society_app/products/providers/movie_service_provider/trending_provider.dart';
 import 'package:collection/collection.dart';
 
 import '../../../core/constants/api_const.dart';
+import '../../../core/theme/custom_colors.dart';
 import '../../../core/utils/attributes/attributes.dart';
+import '../../../core/widgets/custom_space.dart';
+import '../../../core/widgets/rating_star_line.dart';
 import '../../../products/models/movie_models/movie_genres_model.dart';
 import '../../../products/models/movie_models/trend_movie_model.dart';
 import '../../../products/providers/movie_service_provider/genres_provider.dart';
+import '../../../products/providers/movie_service_provider/trending_provider.dart';
 import '../../movie_detail_screen/view/movie_detail_screen.dart';
 
 class TrendList extends ConsumerStatefulWidget {
@@ -75,7 +75,8 @@ class _TrendListState extends ConsumerState<TrendList> {
                       child: Row(
                         children: [
                           CachedNetworkImage(
-                            imageUrl: '$apiImagePath${trend?.posterPath}',
+                            imageUrl:
+                                '${ApiConstants.apiImagePath}${trend?.posterPath}',
                             placeholder: (context, url) => const Center(
                                 child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) =>

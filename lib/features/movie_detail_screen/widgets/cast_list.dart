@@ -39,7 +39,8 @@ class CastList extends ConsumerWidget {
                         borderRadius: BorderRadius.circular(
                             Attributes().cardBorderRadius),
                         child: CachedNetworkImage(
-                          imageUrl: '$apiImagePath${cast?.profilePath}',
+                          imageUrl:
+                              '${ApiConstants.apiImagePath}${cast?.profilePath}',
                           placeholder: (context, url) =>
                               const Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) =>

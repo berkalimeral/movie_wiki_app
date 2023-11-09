@@ -3,30 +3,30 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:http/http.dart' as https;
-import 'package:uni_society_app/core/constants/api_const.dart';
-import 'package:uni_society_app/products/network/network_values.dart';
 
-import '../models/cast_model/cast_model.dart';
+import '../constants/api_const.dart';
 
-class MovieSeriesService {
-  Future<CastModel?> getCastsById(int? id) async {
-    var response = await https.get(
+class ApiClient {
+  static dynamic get(String path) async {
+    final response = await https.get(
         Uri(
             scheme: 'https',
             host: ApiConstants.apiHost,
-            path: EndPointsBoth.casts(id),
+            path: path,
             queryParameters: {
               'language': 'tr-TR',
+              'page': '1',
             }),
         headers: {
           'Authorization': ApiConstants.apiReadAccessToken,
         });
+
     if (response.statusCode == HttpStatus.ok) {
       var responseBody = jsonDecode(response.body);
-      return CastModel.fromJson(responseBody);
+      return responseBody;
     } else {
       log(
-        'Something is wrong in getCastsById',
+        'Something is wrong getting data!',
       );
       return null;
     }

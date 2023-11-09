@@ -1,226 +1,78 @@
-import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
-
-import 'package:http/http.dart' as https;
-import 'package:uni_society_app/products/models/movie_models/movie_genres_model.dart';
-import 'package:uni_society_app/products/models/movie_models/now_playing_model.dart';
-
-import '../../core/constants/api_const.dart';
+import '../../core/base/api_client.dart';
+import '../../core/base/base_service.dart';
 import '../models/cast_model/movie_credit_cast_model.dart';
 import '../models/movie_detail_model/movie_casts_model.dart';
 import '../models/movie_detail_model/movie_detail_model.dart';
+import '../models/movie_models/movie_genres_model.dart';
+import '../models/movie_models/now_playing_model.dart';
 import '../models/movie_models/popular_movie_model.dart';
 import '../models/movie_models/trend_movie_model.dart';
 import '../models/movie_detail_model/movie_similar_model.dart';
 import '../network/network_values.dart';
 
-class MovieService {
+class MovieService extends BaseServiceMovie {
   ///Get Now Playing Movies
+  @override
   Future<List<NowPlays>?> getNowPlayingMovies() async {
-    var response = await https.get(
-        Uri(
-            scheme: 'https',
-            host: apiHost,
-            path: EndPointsMovie.nowPlaying,
-            queryParameters: {
-              'language': 'tr-TR',
-              'page': '1',
-            }),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      NowPlayingModel nowPlaying = NowPlayingModel.fromJson(responseBody);
-      return nowPlaying.results;
-    } else {
-      log(
-        'Something is wrong in getNowPlaying',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsMovie.nowPlaying);
+    NowPlayingModel nowPlaying = NowPlayingModel.fromJson(responseBody);
+    return nowPlaying.results;
   }
 
   ///Get Popular Movies
+  @override
   Future<List<Populars>?> getPopularMovies() async {
-    var response = await https.get(
-        Uri(
-            scheme: 'https',
-            host: apiHost,
-            path: EndPointsMovie.popular,
-            queryParameters: {
-              'language': 'tr-TR',
-              'page': '1',
-            }),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      PopularMovieModel popular = PopularMovieModel.fromJson(responseBody);
-      return popular.results;
-    } else {
-      log(
-        'Something is wrong in getPopularMovies',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsMovie.popular);
+    PopularMovieModel popular = PopularMovieModel.fromJson(responseBody);
+    return popular.results;
   }
 
   ///Get Trending Movie
+  @override
   Future<List<Trends>?> getTrendingMovies() async {
-    var response = await https.get(
-        Uri(
-            scheme: 'https',
-            host: apiHost,
-            path: EndPointsMovie.trending,
-            queryParameters: {
-              'language': 'tr-TR',
-            }),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      TrendMovieModel trending = TrendMovieModel.fromJson(responseBody);
-      return trending.results;
-    } else {
-      log(
-        'Something is wrong in getTrendingMovies',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsMovie.trending);
+    TrendMovieModel trending = TrendMovieModel.fromJson(responseBody);
+    return trending.results;
   }
 
   ///Get Movie Genres
+  @override
   Future<List<MovieGenres>?> getMovieGenres() async {
-    var response = await https.get(
-        Uri(
-            scheme: 'https',
-            host: apiHost,
-            path: EndPointsBoth.movieGenres,
-            queryParameters: {
-              'language': 'tr',
-            }),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      MovieGenresModel movieGenres = MovieGenresModel.fromJson(responseBody);
-      return movieGenres.genres;
-    } else {
-      log(
-        'Something is wrong in getMovieGenres',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsBoth.movieGenres);
+    MovieGenresModel movieGenres = MovieGenresModel.fromJson(responseBody);
+    return movieGenres.genres;
   }
 
   ///Get Movie Detail Service
+  @override
   Future<MovieDetailModel?> getMovieDetailById(int movieId) async {
-    var response = await https.get(
-        Uri(
-          scheme: 'https',
-          host: apiHost,
-          path: EndPointsMovie.movieDetail(movieId),
-          queryParameters: {
-            'language': 'tr-TR',
-          },
-        ),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      MovieDetailModel movieDetail = MovieDetailModel.fromJson(responseBody);
-      return movieDetail;
-    } else {
-      log(
-        'Something is wrong in getMovieDetailById',
-      );
-      return null;
-    }
+    final responseBody =
+        await ApiClient.get(EndPointsMovie.movieDetail(movieId));
+    MovieDetailModel movieDetail = MovieDetailModel.fromJson(responseBody);
+    return movieDetail;
   }
 
   ///Get Movie Casts
+  @override
   Future<List<Cast>?> getMovieCastsById(int? id) async {
-    var response = await https.get(
-        Uri(
-          scheme: 'https',
-          host: apiHost,
-          path: EndPointsMovie.actors(id),
-          queryParameters: {
-            'language': 'tr-TR',
-          },
-        ),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      CastsModel casts = CastsModel.fromJson(responseBody);
-      return casts.cast;
-    } else {
-      log(
-        'Something is wrong in getMovieCastsById',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsMovie.actors(id));
+    CastsModel casts = CastsModel.fromJson(responseBody);
+    return casts.cast;
   }
 
   ///Get Movie Casts
+  @override
   Future<List<SimilarMovie>?> getMovieSimilarById(int? id) async {
-    var response = await https.get(
-        Uri(
-          scheme: 'https',
-          host: apiHost,
-          path: EndPointsMovie.similar(id),
-          queryParameters: {
-            'language': 'tr-TR',
-          },
-        ),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      SimilarModel similar = SimilarModel.fromJson(responseBody);
-      return similar.results;
-    } else {
-      log(
-        'Something is wrong in getMovieRecommendationById',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsMovie.similar(id));
+    SimilarModel similar = SimilarModel.fromJson(responseBody);
+    return similar.results;
   }
 
   ///Get Movie Credit
+  @override
   Future<List<MovieCreditCast>?> getMovieCreditCast(int? id) async {
-    var response = await https.get(
-        Uri(
-          scheme: 'https',
-          host: apiHost,
-          path: EndPointsMovie.credits(id),
-          queryParameters: {
-            'language': 'tr-TR',
-          },
-        ),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      MovieCreditsModel credit = MovieCreditsModel.fromJson(responseBody);
-      return credit.cast;
-    } else {
-      log(
-        'Something is wrong in getMovieCreditCast',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsMovie.credits(id));
+    MovieCreditsModel credit = MovieCreditsModel.fromJson(responseBody);
+    return credit.cast;
   }
 }

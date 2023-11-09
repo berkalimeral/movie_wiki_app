@@ -43,7 +43,8 @@ class TopRatedCard extends ConsumerWidget {
                       child: Row(
                         children: [
                           CachedNetworkImage(
-                            imageUrl: '$apiImagePath${topRated?.posterPath}',
+                            imageUrl:
+                                '${ApiConstants.apiImagePath}${topRated?.posterPath}',
                             placeholder: (context, url) => const Center(
                                 child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) =>

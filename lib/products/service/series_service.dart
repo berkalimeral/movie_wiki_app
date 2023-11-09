@@ -1,10 +1,5 @@
-import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
-
-import 'package:http/http.dart' as https;
-
-import '../../core/constants/api_const.dart';
+import '../../core/base/api_client.dart';
+import '../../core/base/base_service.dart';
 
 import '../models/cast_model/series_credit_cast_model.dart';
 import '../models/series_detail_model/series_cast_model.dart';
@@ -16,209 +11,69 @@ import '../models/series_models/top_rated_series_model.dart';
 import '../models/series_models/trends_series_model.dart';
 import '../network/network_values.dart';
 
-class SeriesService {
+class SeriesService extends BaseServiceSeries {
+  ///Get Series Top Rated Service
+  @override
   Future<List<TopRateds>?> getTopRatedSeries() async {
-    var response = await https.get(
-        Uri(
-            scheme: 'https',
-            host: apiHost,
-            path: EndPointsSeries.topRated,
-            queryParameters: {
-              'language': 'tr-TR',
-              'page': '1',
-            }),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      TopRatedSeriesModel nowPlaying =
-          TopRatedSeriesModel.fromJson(responseBody);
-      return nowPlaying.results;
-    } else {
-      log(
-        'Something is wrong in getTopRatedSeries',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsSeries.topRated);
+    TopRatedSeriesModel nowPlaying = TopRatedSeriesModel.fromJson(responseBody);
+    return nowPlaying.results;
   }
 
+  ///Get Series Popular Service
+  @override
   Future<List<PopularSeries>?> getPopularSeries() async {
-    var response = await https.get(
-        Uri(
-            scheme: 'https',
-            host: apiHost,
-            path: EndPointsSeries.popular,
-            queryParameters: {
-              'language': 'tr-TR',
-              'page': '1',
-            }),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      PopularSeriesModel popular = PopularSeriesModel.fromJson(responseBody);
-      return popular.results;
-    } else {
-      log(
-        'Something is wrong in getPopularSeries',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsSeries.popular);
+    PopularSeriesModel popular = PopularSeriesModel.fromJson(responseBody);
+    return popular.results;
   }
 
+  ///Get Series Trending Service
+  @override
   Future<List<TrendsSeries>?> getTrendingSeries() async {
-    var response = await https.get(
-        Uri(
-            scheme: 'https',
-            host: apiHost,
-            path: EndPointsSeries.trending,
-            queryParameters: {
-              'language': 'tr-TR',
-            }),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      TrendsSeriesModel trending = TrendsSeriesModel.fromJson(responseBody);
-      return trending.results;
-    } else {
-      log(
-        'Something is wrong in getTrendingSeries',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsSeries.trending);
+    TrendsSeriesModel trending = TrendsSeriesModel.fromJson(responseBody);
+    return trending.results;
   }
 
+  ///Get Series Genres Service
+  @override
   Future<List<SeriesGenres>?> getSeriesGenres() async {
-    var response = await https.get(
-        Uri(
-            scheme: 'https',
-            host: apiHost,
-            path: EndPointsBoth.seriesGenres,
-            queryParameters: {
-              'language': 'tr',
-            }),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      SeriesGenresModel seriesGenres = SeriesGenresModel.fromJson(responseBody);
-      return seriesGenres.genres;
-    } else {
-      log(
-        'Something is wrong in getMovieGenres',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsBoth.seriesGenres);
+    SeriesGenresModel seriesGenres = SeriesGenresModel.fromJson(responseBody);
+    return seriesGenres.genres;
   }
 
   ///Get Series Detail Service
+  @override
   Future<SeriesDetailModel?> getSeriesDetailById(int movieId) async {
-    var response = await https.get(
-        Uri(
-          scheme: 'https',
-          host: apiHost,
-          path: EndPointsSeries.seriesDetail(movieId),
-          queryParameters: {
-            'language': 'tr-TR',
-          },
-        ),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      SeriesDetailModel seriesDetail = SeriesDetailModel.fromJson(responseBody);
-      return seriesDetail;
-    } else {
-      log(
-        'Something is wrong in getSeriesDetailById',
-      );
-      return null;
-    }
+    final responseBody =
+        await ApiClient.get(EndPointsSeries.seriesDetail(movieId));
+    SeriesDetailModel seriesDetail = SeriesDetailModel.fromJson(responseBody);
+    return seriesDetail;
   }
 
   ///Get Series Casts
+  @override
   Future<List<SeriesCast>?> getSeriesCastsById(int? id) async {
-    var response = await https.get(
-        Uri(
-          scheme: 'https',
-          host: apiHost,
-          path: EndPointsSeries.actors(id),
-          queryParameters: {
-            'language': 'tr-TR',
-          },
-        ),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      SeriesCastModel seriesCasts = SeriesCastModel.fromJson(responseBody);
-      return seriesCasts.cast;
-    } else {
-      log(
-        'Something is wrong in getSeriesCastsById',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsSeries.actors(id));
+    SeriesCastModel seriesCasts = SeriesCastModel.fromJson(responseBody);
+    return seriesCasts.cast;
   }
 
   ///Get Series Similar
+  @override
   Future<List<SimilarSeries>?> getSeriesSimilarById(int? id) async {
-    var response = await https.get(
-        Uri(
-          scheme: 'https',
-          host: apiHost,
-          path: EndPointsSeries.similar(id),
-          queryParameters: {
-            'language': 'tr-TR',
-          },
-        ),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      SeriesSimilarModel similar = SeriesSimilarModel.fromJson(responseBody);
-      return similar.results;
-    } else {
-      log(
-        'Something is wrong in getSeriesSimilarById',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsSeries.similar(id));
+    SeriesSimilarModel similar = SeriesSimilarModel.fromJson(responseBody);
+    return similar.results;
   }
 
   ///Get Series Credit
+  @override
   Future<List<SeriesCreditCast>?> getSeriesCreditCast(int? id) async {
-    var response = await https.get(
-        Uri(
-          scheme: 'https',
-          host: apiHost,
-          path: EndPointsSeries.credit(id),
-          queryParameters: {
-            'language': 'tr-TR',
-          },
-        ),
-        headers: {
-          'Authorization': apiReadAccessToken,
-        });
-    if (response.statusCode == HttpStatus.ok) {
-      var responseBody = jsonDecode(response.body);
-      SeriesCreditsModel credit = SeriesCreditsModel.fromJson(responseBody);
-      return credit.cast;
-    } else {
-      log(
-        'Something is wrong in getSeriesCreditCast',
-      );
-      return null;
-    }
+    final responseBody = await ApiClient.get(EndPointsSeries.credit(id));
+    SeriesCreditsModel credit = SeriesCreditsModel.fromJson(responseBody);
+    return credit.cast;
   }
 }
