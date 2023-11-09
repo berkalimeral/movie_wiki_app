@@ -17,6 +17,7 @@ class AppTheme {
           unselectedIconTheme: IconThemeData(
             color: CustomColorsLight.surface,
           ),
+          selectedLabelStyle: TextStyle(color: CustomColorsDark.onBackground),
         ),
       );
   static ThemeData get themeDark => ThemeData.dark().copyWith(
@@ -29,6 +30,7 @@ class AppTheme {
           unselectedIconTheme: IconThemeData(
             color: CustomColorsLight.surface,
           ),
+          selectedLabelStyle: TextStyle(color: CustomColorsDark.onBackground),
         ),
       );
 }

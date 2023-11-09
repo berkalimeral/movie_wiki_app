@@ -1,0 +1,21 @@
+{
+    "nowPlaying" : "Now Playing",
+    "popular" : "Popular Movies",
+    "trendMovie" : "Trending Movies",
+    "topRated" : "Top Rated Series",
+    "popularSeries" : "Popular Series",
+    "trendSeries" : "Trending Series",
+    "length" : "Length",
+    "language" : "Language",
+    "revenue" : "Revenue",
+    "description" : "Description",
+    "casts" : "Casts",
+    "similar" : "Similar",
+    "season" : "Season",
+    "settings" : "Settings",
+    "languages" : "Languages",
+    "turkish" : "Turkish",
+    "english" : "English",
+    "movie" : "Movie",
+    "tvSeries" : "TV Series"
+}

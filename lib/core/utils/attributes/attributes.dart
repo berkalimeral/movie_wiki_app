@@ -1,4 +1,6 @@
 class Attributes {
+  final double longPadding = 32;
+
   final double scaffoldPaddingHorizontal = 12;
   final double scaffoldPaddingVertical = 10;
   final double detailPaddingHorizontal = 16;

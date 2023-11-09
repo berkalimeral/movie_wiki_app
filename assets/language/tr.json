@@ -1,0 +1,21 @@
+{
+    "nowPlaying" : "Şu anda Gösterimde",
+    "popular" : "Populer Filmler",
+    "trendMovie" : "Trend Olan Filmler",
+    "topRated" : "En Çok Oylananlar",
+    "popularSeries" : "Populer Diziler",
+    "trendSeries" : "Trend Olan Diziler",
+    "length" : "Uzunluk",
+    "language" : "Dil",
+    "revenue" : "Hasılat",
+    "description" : "Tanım",
+    "casts" : "Oyuncular",
+    "similar" : "Benzer",
+    "season" : "Sezon",
+    "settings" : "Ayarlar",
+    "languages" : "Diller",
+    "turkish" : "Türkçe",
+    "english" : "İngilizce",
+    "movie" : "Film",
+    "tvSeries" : "Dizi"
+}
