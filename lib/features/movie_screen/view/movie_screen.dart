@@ -1,14 +1,13 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'package:uni_society_app/core/constants/app_constants.dart';
-import 'package:uni_society_app/core/utils/attributes/attributes.dart';
-import 'package:uni_society_app/features/movie_screen/widgets/trending_list_card.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
 
 import '../widgets/now_playing_card.dart';
 import '../widgets/popular_list_card.dart';
+import '../widgets/trending_list_card.dart';
 
 class MovieScreen extends StatelessWidget {
   const MovieScreen({super.key});
@@ -24,7 +23,7 @@ class MovieScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(AppConstants.nowPlaying.tr()),
+              Text(AppLocalizations.of(context)!.nowPlaying),
               const CustomSpace(
                 height: 10,
               ),
@@ -32,12 +31,12 @@ class MovieScreen extends StatelessWidget {
               const CustomSpace(
                 height: 10,
               ),
-              Text(AppConstants.popular.tr()),
+              Text(AppLocalizations.of(context)!.popular),
               const PopularList(),
               const CustomSpace(
                 height: 10,
               ),
-              Text(AppConstants.trendMovie.tr()),
+              Text(AppLocalizations.of(context)!.trendMovie),
               const TrendList(),
             ],
           ),

@@ -1,6 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:uni_society_app/core/constants/app_constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 
 import '../../../core/theme/custom_colors.dart';
@@ -56,7 +55,7 @@ class DetailBodyArea extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text(AppConstants.length.tr(),
+                    Text(AppLocalizations.of(context)!.length,
                         style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
@@ -71,7 +70,7 @@ class DetailBodyArea extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(AppConstants.language.tr(),
+                    Text(AppLocalizations.of(context)!.language,
                         style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
@@ -82,7 +81,7 @@ class DetailBodyArea extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(AppConstants.revenue.tr(),
+                    Text(AppLocalizations.of(context)!.revenue,
                         style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
@@ -94,7 +93,7 @@ class DetailBodyArea extends StatelessWidget {
               ],
             ),
             const Divider(),
-            Text(AppConstants.description.tr()),
+            Text(AppLocalizations.of(context)!.description),
             const CustomSpace(
               height: 5,
             ),
@@ -105,7 +104,7 @@ class DetailBodyArea extends StatelessWidget {
             const CustomSpace(
               height: 5,
             ),
-            Text(AppConstants.casts.tr()),
+            Text(AppLocalizations.of(context)!.casts),
             const CustomSpace(
               height: 5,
             ),
@@ -116,7 +115,7 @@ class DetailBodyArea extends StatelessWidget {
             const CustomSpace(
               height: 5,
             ),
-            Text(AppConstants.similar.tr()),
+            Text(AppLocalizations.of(context)!.similar),
             const CustomSpace(
               height: 5,
             ),

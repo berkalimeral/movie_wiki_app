@@ -1,7 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../core/constants/app_constants.dart';
 import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
 import '../widgets/popular_series_card.dart';
@@ -21,24 +20,24 @@ class SeriesScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(AppConstants.topRated.tr()),
-              CustomSpace(
+              Text(AppLocalizations.of(context)!.topRated),
+              const CustomSpace(
                 height: 10,
               ),
-              TopRatedCard(),
-              CustomSpace(
+              const TopRatedCard(),
+              const CustomSpace(
                 height: 10,
               ),
-              Text(AppConstants.popularSeries.tr()),
-              CustomSpace(
+              Text(AppLocalizations.of(context)!.popularSeries),
+              const CustomSpace(
                 height: 10,
               ),
-              PopularSeriesCard(),
-              CustomSpace(
+              const PopularSeriesCard(),
+              const CustomSpace(
                 height: 10,
               ),
-              Text(AppConstants.trendSeries.tr()),
-              TrendSeriesCard(),
+              Text(AppLocalizations.of(context)!.trendSeries),
+              const TrendSeriesCard(),
             ],
           ),
         ),

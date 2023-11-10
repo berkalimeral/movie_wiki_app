@@ -1,7 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/custom_colors.dart';
 import '../../../core/widgets/custom_space.dart';
 
@@ -19,7 +18,7 @@ class AppDrawerHeader extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text(AppConstants.settings.tr()),
+          Text(AppLocalizations.of(context)!.settings),
           const CustomSpace(
             width: 10,
           ),

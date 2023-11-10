@@ -1,8 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
-
-import '../../../core/constants/app_constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../core/language/language.dart';
 import 'home_drawer_body_item.dart';
 
 class AppDrawerBody extends StatelessWidget {
@@ -14,15 +13,15 @@ class AppDrawerBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExpansionTile(
       title: Text(
-        AppConstants.languages.tr(),
+        AppLocalizations.of(context)!.languages,
         style: context.textTheme.titleMedium,
       ),
-      children: [
+      children: const [
         DrawerBodyItem(
-          title: AppConstants.turkish.tr(),
+          title: Language.turkish,
         ),
         DrawerBodyItem(
-          title: AppConstants.english.tr(),
+          title: Language.english,
         ),
       ],
     );

@@ -1,17 +1,16 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
-import 'package:uni_society_app/core/utils/attributes/attributes.dart';
-import 'package:uni_society_app/core/widgets/rating_star_line.dart';
-import 'package:uni_society_app/features/movie_detail_screen/widgets/gender_area.dart';
-import 'package:uni_society_app/features/series_detail_screen.dart/widgets/series_similar_list.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/custom_colors.dart';
+import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
+import '../../../core/widgets/rating_star_line.dart';
 import '../../../products/models/series_detail_model/series_detail_model.dart';
+import '../../movie_detail_screen/widgets/gender_area.dart';
 import 'series_cast_list.dart';
 import 'series_season_list.dart';
+import 'series_similar_list.dart';
 
 class SeriesDetailBodyArea extends StatelessWidget {
   const SeriesDetailBodyArea({super.key, required this.seriesDetail});
@@ -56,7 +55,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text(AppConstants.length.tr(),
+                    Text(AppLocalizations.of(context)!.length,
                         style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
@@ -74,7 +73,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(AppConstants.language.tr(),
+                    Text(AppLocalizations.of(context)!.language,
                         style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
@@ -85,7 +84,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(AppConstants.season.tr(),
+                    Text(AppLocalizations.of(context)!.season,
                         style: context.textTheme.titleMedium),
                     const CustomSpace(
                       height: 3,
@@ -97,7 +96,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
               ],
             ),
             const Divider(),
-            const Text(AppConstants.description),
+            Text(AppLocalizations.of(context)!.description),
             const CustomSpace(
               height: 5,
             ),
@@ -108,7 +107,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
             const CustomSpace(
               height: 5,
             ),
-            Text(AppConstants.season.tr()),
+            Text(AppLocalizations.of(context)!.season),
             SizedBox(
               height: context.height * 0.26,
               child: SeasonList(seriesSeason: seriesDetail?.seasons),
@@ -116,7 +115,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
             const CustomSpace(
               height: 5,
             ),
-            Text(AppConstants.casts.tr()),
+            Text(AppLocalizations.of(context)!.casts),
             const CustomSpace(
               height: 5,
             ),
@@ -127,7 +126,7 @@ class SeriesDetailBodyArea extends StatelessWidget {
             const CustomSpace(
               height: 5,
             ),
-            Text(AppConstants.similar.tr()),
+            Text(AppLocalizations.of(context)!.similar),
             const CustomSpace(
               height: 5,
             ),
