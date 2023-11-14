@@ -37,7 +37,7 @@ class MovieService extends BaseServiceMovie {
 
   ///Get Movie Genres
   @override
-  Future<List<MovieGenres>?> getMovieGenres() async {
+  Future<List<Genres>?> getMovieGenres() async {
     final responseBody = await ApiClient.get(EndPointsBoth.movieGenres);
     MovieGenresModel movieGenres = MovieGenresModel.fromJson(responseBody);
     return movieGenres.genres;

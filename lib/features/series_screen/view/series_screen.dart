@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:uni_society_app/products/providers/series_service_provider/popular_series_provider.dart';
+import 'package:uni_society_app/products/providers/series_service_provider/trending_series_provider.dart';
 
 import '../../../core/utils/attributes/attributes.dart';
+import '../../../core/widgets/build_trend_popular_card.dart';
 import '../../../core/widgets/custom_space.dart';
-import '../widgets/popular_series_card.dart';
 import '../widgets/top_rated_card.dart';
-import '../widgets/trending_series_card.dart';
 
-class SeriesScreen extends StatelessWidget {
+class SeriesScreen extends ConsumerWidget {
   const SeriesScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -32,12 +34,18 @@ class SeriesScreen extends StatelessWidget {
               const CustomSpace(
                 height: 10,
               ),
-              const PopularSeriesCard(),
+              BuildTrendPopularCard(
+                future:
+                    ref.read(popularSeriesProvider.notifier).getPopularSeries(),
+              ),
               const CustomSpace(
                 height: 10,
               ),
               Text(AppLocalizations.of(context)!.trendSeries),
-              const TrendSeriesCard(),
+              BuildTrendPopularCard(
+                future:
+                    ref.read(trendSeriesProvider.notifier).getTrendingSeries(),
+              ),
             ],
           ),
         ),

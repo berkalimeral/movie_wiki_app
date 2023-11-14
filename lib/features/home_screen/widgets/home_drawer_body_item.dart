@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 
-import '../../../core/language/language.dart';
+import '../../../core/enums/language/language.dart';
 import '../../../core/utils/attributes/attributes.dart';
 import '../../../l10n/repository/language_repo.dart';
 

@@ -17,5 +17,6 @@
     "turkish" : "Türkçe",
     "english" : "İngilizce",
     "movie" : "Film",
-    "tvSeries" : "Dizi"
+    "tvSeries" : "Dizi",
+    "firstAirDate" : "İlk Gösterim Tarihi"
 }

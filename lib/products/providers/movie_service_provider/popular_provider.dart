@@ -13,7 +13,7 @@ class PopularProvider extends StateNotifier<List<Populars>?> {
 
   final MovieService _service;
 
-  Future<List<Populars>?> getNowPlaysMovie() async {
+  Future<List<Populars>?> getPopularMovie() async {
     state = await _service.getPopularMovies();
     return state;
   }

@@ -1,3 +1,5 @@
+import '../movie_models/movie_genres_model.dart';
+
 class SeriesDetailModel {
   String? backdropPath;
   List<CreatedBy>? createdBy;
@@ -141,25 +143,6 @@ class CreatedBy {
     data['id'] = id;
     data['name'] = name;
     data['profile_path'] = profilePath;
-    return data;
-  }
-}
-
-class Genres {
-  int? id;
-  String? name;
-
-  Genres({this.id, this.name});
-
-  Genres.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
     return data;
   }
 }

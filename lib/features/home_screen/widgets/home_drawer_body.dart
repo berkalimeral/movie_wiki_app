@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../core/language/language.dart';
+import '../../../core/enums/language/language.dart';
 import 'home_drawer_body_item.dart';
 
 class AppDrawerBody extends StatelessWidget {

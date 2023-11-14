@@ -28,11 +28,11 @@ class PopularSeries {
   List<int>? genreIds;
   int? id;
   List<String>? originCountry;
-  String? originalName;
-  String? name;
+  String? originalTitle;
+  String? title;
   String? overview;
   String? posterPath;
-  String? firstAirDate;
+  String? releaseDate;
   double? voteAverage;
 
   PopularSeries({
@@ -40,11 +40,11 @@ class PopularSeries {
     this.genreIds,
     this.id,
     this.originCountry,
-    this.originalName,
-    this.name,
+    this.originalTitle,
+    this.title,
     this.overview,
     this.posterPath,
-    this.firstAirDate,
+    this.releaseDate,
     this.voteAverage,
   });
 
@@ -54,12 +54,12 @@ class PopularSeries {
     id = json['id'];
     originCountry = json['origin_country'].cast<String>();
 
-    originalName = json['original_name'];
-    name = json['name'];
+    originalTitle = json['original_name'];
+    title = json['name'];
     overview = json['overview'];
 
     posterPath = json['poster_path'];
-    firstAirDate = json['first_air_date'];
+    releaseDate = json['first_air_date'];
 
     voteAverage = json['vote_average'];
   }
@@ -70,12 +70,12 @@ class PopularSeries {
     data['genre_ids'] = genreIds;
     data['id'] = id;
     data['origin_country'] = originCountry;
-    data['original_name'] = originalName;
-    data['name'] = name;
+    data['original_name'] = originalTitle;
+    data['name'] = title;
     data['overview'] = overview;
 
     data['poster_path'] = posterPath;
-    data['first_air_date'] = firstAirDate;
+    data['first_air_date'] = releaseDate;
 
     data['vote_average'] = voteAverage;
 

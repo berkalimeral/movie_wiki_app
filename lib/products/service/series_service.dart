@@ -2,6 +2,7 @@ import '../../core/base/api_client.dart';
 import '../../core/base/base_service.dart';
 
 import '../models/cast_model/series_credit_cast_model.dart';
+import '../models/movie_models/movie_genres_model.dart';
 import '../models/series_detail_model/series_cast_model.dart';
 import '../models/series_detail_model/series_detail_model.dart';
 import '../models/series_detail_model/series_similar_model.dart';
@@ -38,7 +39,7 @@ class SeriesService extends BaseServiceSeries {
 
   ///Get Series Genres Service
   @override
-  Future<List<SeriesGenres>?> getSeriesGenres() async {
+  Future<List<Genres>?> getSeriesGenres() async {
     final responseBody = await ApiClient.get(EndPointsBoth.seriesGenres);
     SeriesGenresModel seriesGenres = SeriesGenresModel.fromJson(responseBody);
     return seriesGenres.genres;

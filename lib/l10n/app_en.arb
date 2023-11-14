@@ -17,5 +17,6 @@
     "turkish" : "Turkish",
     "english" : "English",
     "movie" : "Movie",
-    "tvSeries" : "TV Series"
+    "tvSeries" : "TV Series",
+    "firstAirDate" : "First Air Date"
 }

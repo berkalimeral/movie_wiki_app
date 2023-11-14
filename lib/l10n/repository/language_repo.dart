@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../core/language/language.dart';
+import '../../core/enums/language/language.dart';
 import '../../products/providers/app_provider/app_provider.dart';
 
 class LanguageRepo {

@@ -3,13 +3,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
-import 'package:uni_society_app/features/series_detail_screen.dart/view/series_detail_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/constants/api_const.dart';
 import '../../../core/widgets/custom_space.dart';
 import '../../../products/models/series_models/top_rated_series_model.dart';
 import '../../../products/providers/series_service_provider/top_rated_series_providers.dart';
 import '../../../core/widgets/rating_star_line.dart';
+import '../../series_detail_screen.dart/view/series_detail_screen.dart';
 
 class TopRatedCard extends ConsumerWidget {
   const TopRatedCard({
@@ -73,7 +74,7 @@ class TopRatedCard extends ConsumerWidget {
                                 ),
                                 RatingStarLine(rating: topRated?.voteAverage),
                                 Text(
-                                  'First Air Date: ${topRated?.firstAirDate}',
+                                  '${AppLocalizations.of(context)?.firstAirDate} ${topRated?.firstAirDate}',
                                   maxLines: 2,
                                   style: context.textTheme.titleMedium,
                                 ),
