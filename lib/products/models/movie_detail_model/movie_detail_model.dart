@@ -1,3 +1,4 @@
+import '../../local_db/model/movie_table.dart';
 import '../movie_models/movie_genres_model.dart';
 
 class MovieDetailModel {
@@ -30,6 +31,14 @@ class MovieDetailModel {
     this.title,
     this.voteAverage,
   });
+
+  MovieTable toMovieDetail(MovieDetailModel? movie) {
+    return MovieTable(
+      id: movie?.id,
+      title: movie?.title,
+      posterPath: movie?.posterPath,
+    );
+  }
 
   MovieDetailModel.fromJson(Map<String, dynamic> json) {
     budget = json['budget'];

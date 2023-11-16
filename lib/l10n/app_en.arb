@@ -21,5 +21,8 @@
     "firstAirDate" : "First Air Date",
     "about" : "About",
     "aboutDesc" : "This product uses the TMDb API but is not endorsed or certified by TMDb. This app is developed for education purpose.",
-    "search" : "Search Movie.."
+    "search" : "Search Movie..",
+    "favorite" : "Favorites",
+    "your_favorite" : "Your Favorite Movies",
+    "empty_favorite" : "You don't have any favorite movie."
 }

@@ -21,5 +21,8 @@
     "firstAirDate" : "İlk Gösterim Tarihi",
     "about" : "Hakkında",
     "aboutDesc" : "Bu ürün TMDb API'sini kullanıyor ancak TMDb tarafından desteklenmiyor veya onaylanmıyor. Bu uygulama eğitim amaçlı geliştirilmiştir.",
-    "search" : "Film Ara.."
+    "search" : "Film Ara..",
+    "favorite" : "Favoriler",
+    "your_favorite" : "Favori Filmlerin",
+    "empty_favorite" : "Henüz bir favori filminiz yok."
 }

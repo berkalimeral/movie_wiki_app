@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../assets.dart';
 import '../../../core/enums/language/language.dart';
 import '../../../core/widgets/custom_space.dart';
+import '../../favorite_screen/view/favorite_screen.dart';
 import 'home_drawer_body_item.dart';
 
 class AppDrawerBody extends StatelessWidget {
@@ -16,6 +17,17 @@ class AppDrawerBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        ListTile(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const FavoriteScreen(),
+            ));
+          },
+          title: Text(
+            AppLocalizations.of(context)!.favorite,
+            style: context.textTheme.titleMedium,
+          ),
+        ),
         ExpansionTile(
           title: Text(
             AppLocalizations.of(context)!.languages,

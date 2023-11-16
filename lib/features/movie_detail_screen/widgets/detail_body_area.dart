@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 
 import '../../../core/theme/custom_colors.dart';
 import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
 import '../../../core/widgets/rating_star_line.dart';
+import '../../../products/local_db/provider/db_save_and_delete_provider.dart';
 import '../../../products/models/movie_detail_model/movie_detail_model.dart';
 import 'cast_list.dart';
 import 'gender_area.dart';
 import 'similar_list.dart';
 
-class DetailBodyArea extends StatelessWidget {
+class DetailBodyArea extends ConsumerWidget {
   const DetailBodyArea({
     super.key,
     this.movieDetail,
@@ -20,7 +22,7 @@ class DetailBodyArea extends StatelessWidget {
   final MovieDetailModel? movieDetail;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SliverToBoxAdapter(
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -39,7 +41,11 @@ class DetailBodyArea extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    ref
+                        .read(saveAndDeleteProvider)
+                        .saveMovie(movieDetail!.toMovieDetail(movieDetail));
+                  },
                   icon: Icon(
                     Icons.favorite_border_outlined,
                     size: 35,
