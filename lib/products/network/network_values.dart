@@ -3,6 +3,7 @@ class EndPointsMovie {
   static const String popular = '/3/movie/popular';
   static const String trending = '/3/trending/movie/day';
   static const String genre = '/3/genre/movie/list';
+  static const String search = '/3/search/movie';
 
   static String movieDetail(id) => '/3/movie/$id';
   static String actors(id) => '/3/movie/$id/credits';

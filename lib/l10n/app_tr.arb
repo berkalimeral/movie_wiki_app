@@ -18,5 +18,8 @@
     "english" : "İngilizce",
     "movie" : "Film",
     "tvSeries" : "Dizi",
-    "firstAirDate" : "İlk Gösterim Tarihi"
+    "firstAirDate" : "İlk Gösterim Tarihi",
+    "about" : "Hakkında",
+    "aboutDesc" : "Bu ürün TMDb API'sini kullanıyor ancak TMDb tarafından desteklenmiyor veya onaylanmıyor. Bu uygulama eğitim amaçlı geliştirilmiştir.",
+    "search" : "Film Ara.."
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../movie_screen/view/movie_screen.dart';
+import '../../search_screen/view/search_screen.dart';
 import '../../series_screen/view/series_screen.dart';
 import '../view_model/home_view_model.dart';
 import '../widgets/app_bottom_bar.dart';
@@ -27,6 +28,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: screens[currentIndex],
       bottomNavigationBar: AppBottomBar(
         currentIndex: currentIndex,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const SearchScreen(),
+          ));
+        },
+        child: const Icon(Icons.search_outlined),
       ),
     );
   }

@@ -75,4 +75,12 @@ class MovieService extends BaseServiceMovie {
     MovieCreditsModel credit = MovieCreditsModel.fromJson(responseBody);
     return credit.cast;
   }
+
+  @override
+  Future<List<Populars>?> getMovieWithParam(String param) async {
+    final responseBody =
+        await ApiClient.getSearch(EndPointsMovie.search, param);
+    PopularMovieModel popular = PopularMovieModel.fromJson(responseBody);
+    return popular.results;
+  }
 }

@@ -31,4 +31,30 @@ class ApiClient {
       return null;
     }
   }
+
+  static dynamic getSearch(String path, String param) async {
+    final response = await https.get(
+        Uri(
+            scheme: 'https',
+            host: ApiConstants.apiHost,
+            path: path,
+            queryParameters: {
+              'query': param,
+              'language': 'tr-TR',
+              'page': '1',
+            }),
+        headers: {
+          'Authorization': ApiConstants.apiReadAccessToken,
+        });
+
+    if (response.statusCode == HttpStatus.ok) {
+      var responseBody = jsonDecode(response.body);
+      return responseBody;
+    } else {
+      log(
+        'Something is wrong getting data!',
+      );
+      return null;
+    }
+  }
 }

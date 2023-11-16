@@ -9,7 +9,7 @@ class CustomColorsDark {
   static Color onSecondary = const Color(0xffFAF8F1);
   static Color error = const Color(0xFFE53935);
   static Color onError = const Color(0xFFE53935);
-  static Color background = const Color(0xff000000);
+  static Color background = const Color.fromARGB(255, 39, 37, 37);
   static Color onBackground = const Color(0xffFAF8F1);
   static Color surface = const Color(0xff735F32);
   static Color onSurface = const Color(0xff735F32);

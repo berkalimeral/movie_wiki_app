@@ -18,5 +18,8 @@
     "english" : "English",
     "movie" : "Movie",
     "tvSeries" : "TV Series",
-    "firstAirDate" : "First Air Date"
+    "firstAirDate" : "First Air Date",
+    "about" : "About",
+    "aboutDesc" : "This product uses the TMDb API but is not endorsed or certified by TMDb. This app is developed for education purpose.",
+    "search" : "Search Movie.."
 }

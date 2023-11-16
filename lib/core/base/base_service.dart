@@ -19,6 +19,7 @@ abstract class BaseServiceMovie {
   Future<List<Populars>?> getPopularMovies();
   Future<List<Trends>?> getTrendingMovies();
   Future<List<Genres>?> getMovieGenres();
+  Future<List<Populars>?> getMovieWithParam(String param);
   Future<MovieDetailModel?> getMovieDetailById(int movieId);
   Future<List<Cast>?> getMovieCastsById(int? id);
   Future<List<SimilarMovie>?> getMovieSimilarById(int? id);

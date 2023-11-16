@@ -18,6 +18,7 @@ class TrendPopularCard extends StatelessWidget {
     this.voteAverage,
     this.genreIds,
     required this.genres,
+    this.isSearchData = false,
   });
 
   final String? posterPath;
@@ -25,11 +26,13 @@ class TrendPopularCard extends StatelessWidget {
   final double? voteAverage;
   final List<int>? genreIds;
   final List<Genres>? genres;
+  final bool isSearchData;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: context.width * .7,
+      width: isSearchData ? double.infinity : context.width * .7,
+      height: isSearchData ? context.height * 0.22 : null,
       margin: EdgeInsets.all(Attributes().cardPadding),
       decoration: BoxDecoration(
         boxShadow: [

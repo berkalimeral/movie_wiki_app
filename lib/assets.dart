@@ -11,4 +11,5 @@ class _AssetsImages {
 
 
   final b3PNG = 'assets/images/b3.png';
+  final tmdbLogoPNG = 'assets/images/tmdb_logo.png';
 }

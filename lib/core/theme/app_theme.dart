@@ -11,6 +11,7 @@ class AppTheme {
         textTheme: AppTextTheme.textTheme,
         colorScheme: AppColorScheme.colorSchemeLight,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: CustomColorsLight.background,
           selectedIconTheme: IconThemeData(
             color: CustomColorsLight.onPrimary,
           ),
@@ -19,11 +20,15 @@ class AppTheme {
           ),
           selectedLabelStyle: TextStyle(color: CustomColorsDark.onBackground),
         ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: CustomColorsLight.background,
+        ),
       );
   static ThemeData get themeDark => ThemeData.dark().copyWith(
         textTheme: AppTextTheme.textTheme,
         colorScheme: AppColorScheme.colorSchemeDark,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: CustomColorsDark.background,
           selectedIconTheme: IconThemeData(
             color: CustomColorsLight.primary,
           ),
@@ -31,6 +36,9 @@ class AppTheme {
             color: CustomColorsLight.surface,
           ),
           selectedLabelStyle: TextStyle(color: CustomColorsDark.onBackground),
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: CustomColorsDark.cardColor,
         ),
       );
 }
