@@ -24,5 +24,12 @@
     "search" : "Film Ara..",
     "favorite" : "Favoriler",
     "your_favorite" : "Favori Filmlerin",
-    "empty_favorite" : "Henüz bir favori filminiz yok."
+    "empty_favorite" : "Henüz bir favori filminiz yok.",
+    "sign_in" : "Giriş Yap",
+    "sign_out" : "Çıkış Yap",
+    "login_txt" : "TMDb ile MovieWiki uygulamasına giriş yapın",
+    "username" : "Kullanıcı Adı",
+    "password" : "Şifre",
+    "username_hint" : "TDMb kullanıcı adınızı giriniz..",
+    "password_hint" : "Şifrenizi giriniz.."
 }

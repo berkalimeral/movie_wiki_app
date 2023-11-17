@@ -11,16 +11,19 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: Attributes().scaffoldPaddingHorizontal,
-                  vertical: Attributes().scaffoldPaddingVertical),
-              child: Image.asset(Assets.images.b3PNG),
-            ),
-            LoginBody(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: Attributes().scaffoldPaddingHorizontal,
+                    vertical: Attributes().scaffoldPaddingVertical),
+                child: Image.asset(Assets.images.b3PNG),
+              ),
+              const LoginBody(),
+            ],
+          ),
         ),
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:uni_society_app/core/extensions/extensions.dart';
 
+import '../../../core/theme/custom_colors.dart';
 import '../../../core/utils/attributes/attributes.dart';
 
 class TextInputArea extends StatelessWidget {
@@ -20,15 +22,20 @@ class TextInputArea extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: Attributes().cardPadding),
+          child: Text(
+            label,
+            style: context.textTheme.titleMedium!.copyWith(
+              color: CustomColorsDark.onBackground,
+            ),
+          ),
+        ),
         TextField(
           controller: controller,
           obscureText: isPassword,
           decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius:
-                  BorderRadius.circular(Attributes().cardBorderRadius),
-            ),
+            border: UnderlineInputBorder(),
             hintText: hintText,
           ),
         ),

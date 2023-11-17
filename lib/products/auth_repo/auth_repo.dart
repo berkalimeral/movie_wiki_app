@@ -6,7 +6,7 @@ import '../service/auth_service.dart';
 
 abstract class AuthRepo {
   Future<bool> loginUser(Map<String, dynamic> body);
-  Future<void> loginOut();
+  Future<void> logOut();
 }
 
 class AuthRepoImpl extends AuthRepo {
@@ -21,7 +21,7 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<void> loginOut() {
+  Future<void> logOut() {
     // TODO: implement loginOut
     throw UnimplementedError();
   }

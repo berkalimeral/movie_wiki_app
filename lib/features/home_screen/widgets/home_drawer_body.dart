@@ -71,6 +71,13 @@ class AppDrawerBody extends StatelessWidget {
             style: context.textTheme.titleMedium,
           ),
         ),
+        ListTile(
+          onTap: () {},
+          title: Text(
+            AppLocalizations.of(context)!.sign_out,
+            style: context.textTheme.titleMedium,
+          ),
+        ),
       ],
     );
   }

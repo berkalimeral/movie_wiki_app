@@ -1,12 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:uni_society_app/products/providers/login_provider/login_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uni_society_app/core/extensions/extensions.dart';
 
+import '../../../core/theme/custom_colors.dart';
 import '../../../core/utils/attributes/attributes.dart';
-import '../../../products/models/user/login_request_model.dart';
-import '../../home_screen/view/home_screen.dart';
+import 'login_button.dart';
 import 'text_input_area.dart';
 
 class LoginBody extends ConsumerStatefulWidget {
@@ -36,45 +35,40 @@ class _LoginBodyState extends ConsumerState<LoginBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: Attributes().scaffoldPaddingHorizontal),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Login to Movie and TV Series app via TMDb',
-              textAlign: TextAlign.center,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: Attributes().longPadding,
+          vertical: Attributes().scaffoldPaddingVertical),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: Attributes().scaffoldPaddingVertical,
             ),
-            TextInputArea(
-              label: 'USERNAME',
-              hintText: 'Enter TDMb username here..',
-              controller: _usernameController,
+            child: Text(
+              AppLocalizations.of(context)!.login_txt,
+              style: context.textTheme.bodyMedium!.copyWith(
+                color: CustomColorsDark.surface,
+              ),
             ),
-            TextInputArea(
-              label: 'PASSWORD',
-              hintText: 'Enter password here..',
-              controller: _passwordController,
-              isPassword: true,
-            ),
-            ElevatedButton(
-                onPressed: () async {
-                  final param = LoginRequestModel(
-                      username: _usernameController.text,
-                      password: _passwordController.text);
-                  final isSuccess = await ref.read(loginProvider).call(param);
-                  if (isSuccess) {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
-                    ));
-                  } else {
-                    log('Error');
-                  }
-                },
-                child: Text('Sign In')),
-          ],
-        ),
+          ),
+          TextInputArea(
+            label: AppLocalizations.of(context)!.username.toUpperCase(),
+            hintText: AppLocalizations.of(context)!.username_hint,
+            controller: _usernameController,
+          ),
+          TextInputArea(
+            label: AppLocalizations.of(context)!.password.toUpperCase(),
+            hintText: AppLocalizations.of(context)!.password_hint,
+            controller: _passwordController,
+            isPassword: true,
+          ),
+          LoginButton(
+              usernameController: _usernameController,
+              passwordController: _passwordController,
+              ref: ref),
+        ],
       ),
     );
   }

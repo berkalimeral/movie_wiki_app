@@ -24,5 +24,12 @@
     "search" : "Search Movie..",
     "favorite" : "Favorites",
     "your_favorite" : "Your Favorite Movies",
-    "empty_favorite" : "You don't have any favorite movie."
+    "empty_favorite" : "You don't have any favorite movie.",
+    "sign_in" : "Sign In",
+    "sign_out" : "Log Out",
+    "login_txt" : "Login to MovieWiki app via TMDb",
+    "username" : "Username",
+    "password" : "Password",
+    "username_hint" : "Enter TDMb username here..",
+    "password_hint" : "Enter password.."
 }
