@@ -1,3 +1,4 @@
+import '../../products/models/auth_model/request_token_model.dart';
 import '../../products/models/cast_model/movie_credit_cast_model.dart';
 import '../../products/models/cast_model/series_credit_cast_model.dart';
 import '../../products/models/movie_detail_model/movie_casts_model.dart';
@@ -35,4 +36,11 @@ abstract class BaseServiceSeries {
   Future<List<SeriesCast>?> getSeriesCastsById(int? id);
   Future<List<SimilarSeries>?> getSeriesSimilarById(int? id);
   Future<List<SeriesCreditCast>?> getSeriesCreditCast(int? id);
+}
+
+abstract class BaseAuthService {
+  Future<RequestTokenModel> getRequestToken();
+  Future<RequestTokenModel?> validateWithLogin(
+      Map<String, dynamic> requestBody);
+  Future<String> createSession(Map<String, dynamic> requestBody);
 }

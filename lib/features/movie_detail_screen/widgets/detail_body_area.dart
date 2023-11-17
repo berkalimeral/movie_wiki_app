@@ -7,7 +7,7 @@ import '../../../core/theme/custom_colors.dart';
 import '../../../core/utils/attributes/attributes.dart';
 import '../../../core/widgets/custom_space.dart';
 import '../../../core/widgets/rating_star_line.dart';
-import '../../../products/local_db/provider/db_save_and_delete_provider.dart';
+import '../../../products/local_db/db_service/provider/db_save_and_delete_provider.dart';
 import '../../../products/models/movie_detail_model/movie_detail_model.dart';
 import 'cast_list.dart';
 import 'gender_area.dart';

@@ -19,6 +19,7 @@ class ApiClient {
             }),
         headers: {
           'Authorization': ApiConstants.apiReadAccessToken,
+          'accept': 'application/json'
         });
 
     if (response.statusCode == HttpStatus.ok) {
@@ -55,6 +56,36 @@ class ApiClient {
         'Something is wrong getting data!',
       );
       return null;
+    }
+  }
+
+  static dynamic post(String path,
+      {required Map<dynamic, dynamic> param}) async {
+    try {
+      final response = await https.post(
+          Uri(
+            scheme: 'https',
+            host: ApiConstants.apiHost,
+            path: path,
+          ),
+          body: jsonEncode(param),
+          headers: {
+            'Authorization': ApiConstants.apiReadAccessToken,
+            'content-type': 'application/json'
+          });
+
+      if (response.statusCode == HttpStatus.ok) {
+        log(response.body);
+        var responseBody = jsonDecode(response.body);
+        return responseBody;
+      } else {
+        log(
+          'Something is wrong getting data!',
+        );
+        return null;
+      }
+    } catch (e) {
+      log('Login Error: ${e.toString()}');
     }
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../db_service/db_service.dart';
+import '../db_service.dart';
 import '../model/movie_table.dart';
 
 final saveAndDeleteProvider =

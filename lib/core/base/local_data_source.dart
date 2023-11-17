@@ -1,4 +1,4 @@
-import '../../products/local_db/model/movie_table.dart';
+import '../../products/local_db/db_service/model/movie_table.dart';
 
 abstract class MovieLocalDataSource {
   Future<void> saveMovie(MovieTable movie);

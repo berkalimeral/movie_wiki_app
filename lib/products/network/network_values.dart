@@ -28,3 +28,10 @@ class EndPointsBoth {
   static const String seriesGenres = '/3/genre/tv/list';
   static String casts(id) => '/3/person/$id';
 }
+
+class EndPointsAuth {
+  static const String authToken = '/3/authentication/token/new';
+  static const String createSession = '/3/authentication/session/new';
+  static const String validateWithLogin =
+      '/3/authentication/token/validate_with_login';
+}

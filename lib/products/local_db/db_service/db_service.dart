@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
-import 'package:uni_society_app/products/local_db/model/movie_table.dart';
 
 import '../../../core/base/local_data_source.dart';
+import 'model/movie_table.dart';
 
 class DBService extends MovieLocalDataSource {
   @override
@@ -28,7 +28,7 @@ class DBService extends MovieLocalDataSource {
   }
 
   @override
-  Future<void> saveMovie(MovieTable movie) async {
+  Future<void> saveMovie(movie) async {
     final box = await Hive.openBox('movieBox');
     await box.put(movie.id, movie);
   }

@@ -1,4 +1,4 @@
-import '../../local_db/model/movie_table.dart';
+import '../../local_db/db_service/model/movie_table.dart';
 import '../movie_models/movie_genres_model.dart';
 
 class MovieDetailModel {
