@@ -6,8 +6,9 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 
 import 'core/theme/app_theme.dart';
 import 'features/home_screen/view/home_screen.dart';
+import 'features/login_screen/view/login_screen.dart';
 import 'l10n/repository/language_repo.dart';
-import 'products/local_db/model/movie_table.dart';
+import 'products/local_db/db_service/model/movie_table.dart';
 import 'products/providers/app_provider/app_provider.dart';
 
 Future<void> main() async {
@@ -36,7 +37,7 @@ class MyApp extends ConsumerWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(watch.code),
       theme: AppTheme.themeDark,
-      home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }

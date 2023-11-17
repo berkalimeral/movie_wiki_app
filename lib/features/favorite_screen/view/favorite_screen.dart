@@ -7,9 +7,9 @@ import 'package:uni_society_app/core/extensions/extensions.dart';
 import '../../../core/constants/api_const.dart';
 import '../../../core/theme/custom_colors.dart';
 import '../../../core/utils/attributes/attributes.dart';
-import '../../../products/local_db/model/movie_table.dart';
-import '../../../products/local_db/provider/db_get_movie_provider.dart';
-import '../../../products/local_db/provider/db_save_and_delete_provider.dart';
+import '../../../products/local_db/db_service/model/movie_table.dart';
+import '../../../products/local_db/db_service/provider/db_get_movie_provider.dart';
+import '../../../products/local_db/db_service/provider/db_save_and_delete_provider.dart';
 
 class FavoriteScreen extends ConsumerWidget {
   const FavoriteScreen({super.key});
