@@ -11,7 +11,7 @@ abstract class AuthRepo {
 
 class AuthRepoImpl extends AuthRepo {
   final AuthService _authService;
-  final AuthLocalDB _authLocalDb;
+  final AuthLocalDBImpl _authLocalDb;
 
   AuthRepoImpl(this._authService, this._authLocalDb);
 
@@ -21,9 +21,16 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<void> logOut() {
-    // TODO: implement loginOut
-    throw UnimplementedError();
+  Future<void> logOut() async {
+    try {
+      final sessionId = await _authLocalDb.getSessionId();
+      await Future.wait([
+        _authService.deleteSession(sessionId),
+        _authLocalDb.deleteSessionId()
+      ]);
+    } catch (e) {
+      log('Logout failed : $e');
+    }
   }
 
   @override

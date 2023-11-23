@@ -33,6 +33,32 @@ class ApiClient {
     }
   }
 
+  static dynamic delete(String path, String? body) async {
+    final response = await https.delete(
+        Uri(
+          scheme: 'https',
+          host: ApiConstants.apiHost,
+          path: path,
+        ),
+        body: {
+          'session_id': body,
+        },
+        headers: {
+          'Authorization': ApiConstants.apiReadAccessToken,
+          'accept': 'application/json'
+        });
+
+    if (response.statusCode == HttpStatus.ok) {
+      var responseBody = jsonDecode(response.body);
+      return responseBody;
+    } else {
+      log(
+        'Something is wrong deleting data!',
+      );
+      return null;
+    }
+  }
+
   static dynamic getSearch(String path, String param) async {
     final response = await https.get(
         Uri(

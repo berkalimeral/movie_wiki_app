@@ -7,7 +7,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../core/utils/attributes/attributes.dart';
 import '../../../products/models/user/login_request_model.dart';
 import '../../../products/providers/login_provider/login_provider.dart';
-import '../../home_screen/view/home_screen.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({
@@ -33,11 +32,9 @@ class LoginButton extends StatelessWidget {
             final param = LoginRequestModel(
                 username: _usernameController.text,
                 password: _passwordController.text);
-            final isSuccess = await ref.read(loginProvider).call(param);
+            final isSuccess =
+                await ref.read(loginProvider.notifier).call(param);
             if (isSuccess) {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const HomeScreen(),
-              ));
             } else {
               log('Error');
             }

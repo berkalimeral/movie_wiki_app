@@ -8,10 +8,16 @@ import '../network/network_values.dart';
 
 class AuthService extends BaseAuthService {
   @override
-  Future<String> createSession(Map<String, dynamic> requestBody) async {
+  Future<String?> createSession(Map<String, dynamic> requestBody) async {
     final response =
         await ApiClient.post(EndPointsAuth.createSession, param: requestBody);
     return response['success'] ? response['session_id'] : null;
+  }
+
+  @override
+  Future<bool> deleteSession(String? body) async {
+    final response = await ApiClient.delete(EndPointsAuth.deleteSession, body);
+    return response['success'] ?? false;
   }
 
   @override

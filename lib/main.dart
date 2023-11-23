@@ -10,6 +10,7 @@ import 'features/login_screen/view/login_screen.dart';
 import 'l10n/repository/language_repo.dart';
 import 'products/local_db/db_service/model/movie_table.dart';
 import 'products/providers/app_provider/app_provider.dart';
+import 'products/providers/login_provider/login_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var watch = ref.watch(appProvider);
+    final auth = ref.watch(loginProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -37,7 +39,7 @@ class MyApp extends ConsumerWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(watch.code),
       theme: AppTheme.themeDark,
-      home: const LoginScreen(),
+      home: auth ? const HomeScreen() : const LoginScreen(),
     );
   }
 }

@@ -42,5 +42,6 @@ abstract class BaseAuthService {
   Future<RequestTokenModel> getRequestToken();
   Future<RequestTokenModel?> validateWithLogin(
       Map<String, dynamic> requestBody);
-  Future<String> createSession(Map<String, dynamic> requestBody);
+  Future<String?> createSession(Map<String, dynamic> requestBody);
+  Future<bool> deleteSession(String body);
 }

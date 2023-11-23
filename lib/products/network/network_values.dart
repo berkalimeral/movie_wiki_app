@@ -32,6 +32,7 @@ class EndPointsBoth {
 class EndPointsAuth {
   static const String authToken = '/3/authentication/token/new';
   static const String createSession = '/3/authentication/session/new';
+  static const String deleteSession = '/3/authentication/session';
   static const String validateWithLogin =
       '/3/authentication/token/validate_with_login';
 }

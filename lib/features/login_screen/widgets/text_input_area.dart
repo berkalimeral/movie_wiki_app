@@ -35,7 +35,7 @@ class TextInputArea extends StatelessWidget {
           controller: controller,
           obscureText: isPassword,
           decoration: InputDecoration(
-            border: UnderlineInputBorder(),
+            border: const UnderlineInputBorder(),
             hintText: hintText,
           ),
         ),

@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uni_society_app/core/extensions/extensions.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../assets.dart';
 import '../../../core/enums/language/language.dart';
 import '../../../core/widgets/custom_space.dart';
+import '../../../products/providers/login_provider/login_provider.dart';
 import '../../favorite_screen/view/favorite_screen.dart';
 import 'home_drawer_body_item.dart';
 
-class AppDrawerBody extends StatelessWidget {
+class AppDrawerBody extends ConsumerWidget {
   const AppDrawerBody({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         ListTile(
@@ -72,7 +74,9 @@ class AppDrawerBody extends StatelessWidget {
           ),
         ),
         ListTile(
-          onTap: () {},
+          onTap: () async {
+            await ref.read(loginProvider.notifier).logoutUser();
+          },
           title: Text(
             AppLocalizations.of(context)!.sign_out,
             style: context.textTheme.titleMedium,
