@@ -1,16 +1,12 @@
 # MovieWiki-App
 
-A new Flutter project.
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+MovieWiki is an open-source Flutter movie/series application. The [Riverpod] was used for state management. The app utilizes the [TMDb] to provide users with an immersive movie discovery experience. With remote API calls managed by [http], and local data storage utilizing [Hive],MovieWiki offers a comprehensive solution for movie and series enthusiasts.
 
 - [Watch the Video Demo](https://www.youtube.com/watch?v=RzUlYojET6E&t=1s)
-
-MovieWiki is an open-source Flutter movie/series application. The [Riverpod] was used for state management. The app utilizes the [TMDb] to provide users with an immersive movie discovery experience. With remote API calls managed by [http], and local data storage utilizing [Hive],MovieWiki offers a comprehensive solution for movie and series enthusiasts.
 
 # Packages
 <li>hive, shared_preferences -> local database</li>
