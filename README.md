@@ -9,7 +9,7 @@ MovieWiki is an open-source Flutter movie/series application. The [Riverpod] was
 - [Watch the Video Demo](https://www.youtube.com/watch?v=RzUlYojET6E&t=1s)
 
 # Images
-
+<img width="150" alt="Screenshot 2023-11-23 at 14 18 03" src="https://github.com/berkalimeral/movie_wiki_app/assets/68756805/7447a5a9-c3f5-41fd-a335-8234ece305ba">
 
 
 # Packages
